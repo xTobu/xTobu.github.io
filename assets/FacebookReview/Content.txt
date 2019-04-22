@@ -1,0 +1,36 @@
+這是 Server-to-Server Apps
+主要是對文章的留言進行回覆的功能, 
+因為測試帳號無法建立粉絲頁
+故無提供測試帳號
+
+目的：
+
+對文章的留言做回覆與私訊的功能
+
+流程：
+1.
+登入並授權給應用程式
+manage_pages,
+publish_pages,
+read_page_mailboxes,
+pages_show_list
+
+2.
+取得可控制的粉絲頁列表
+
+3.
+選擇要使用的粉絲頁
+
+4.
+選擇目標的文章
+
+5.
+對文章內的留言進行回覆 
+obj-id / comments
+( Scope: publish_pages )
+
+
+6.
+對文章內的留言進行私訊回覆
+obj-id / private_replies
+( Scope: read_page_mailboxes )

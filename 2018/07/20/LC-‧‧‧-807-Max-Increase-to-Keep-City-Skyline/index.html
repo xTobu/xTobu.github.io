@@ -1,0 +1,946 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next mist" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="JavaScript,LeetCode,ⓁⒸ - Medium,⭐⭐,Skyline,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="維持城市天際線前提的最大增加量">
+<meta name="keywords" content="JavaScript,LeetCode,ⓁⒸ - Medium,⭐⭐,Skyline">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ⓁⒸ ‧‧‧ 807. Max Increase to Keep City Skyline">
+<meta property="og:url" content="https://xtobu.github.io/2018/07/20/LC-‧‧‧-807-Max-Increase-to-Keep-City-Skyline/index.html">
+<meta property="og:site_name" content="做個筆記">
+<meta property="og:description" content="維持城市天際線前提的最大增加量">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-04-22T05:51:37.439Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ⓁⒸ ‧‧‧ 807. Max Increase to Keep City Skyline">
+<meta name="twitter:description" content="維持城市天際線前提的最大增加量">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xtobu.github.io/2018/07/20/LC-‧‧‧-807-Max-Increase-to-Keep-City-Skyline/">
+
+
+
+
+
+  <title> ⓁⒸ ‧‧‧ 807. Max Increase to Keep City Skyline | 做個筆記 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">做個筆記</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">jotting</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://xtobu.github.io/2018/07/20/LC-‧‧‧-807-Max-Increase-to-Keep-City-Skyline/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Tobu">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/assets/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="做個筆記">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="做個筆記" src>
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                ⓁⒸ ‧‧‧ 807. Max Increase to Keep City Skyline
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-20T12:22:13+08:00">
+                2018-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  維持城市天際線前提的最大增加量
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="807-Max-Increase-to-Keep-City-Skyline-保持城市天際線的最大增量"><a href="#807-Max-Increase-to-Keep-City-Skyline-保持城市天際線的最大增量" class="headerlink" title="807. Max Increase to Keep City Skyline 保持城市天際線的最大增量"></a><a href="https://blog.csdn.net/fuxuemingzhu/article/details/79820383" target="_blank" rel="noopener">807. Max Increase to Keep City Skyline 保持城市天際線的最大增量</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>In a 2 dimensional array <code>grid</code>, each value <code>grid[i][j]</code> represents the height of a building located there.<br>We are allowed to increase the height of any number of buildings, by any amount (the amounts can be different for different buildings).<br>Height 0 is considered to be a building as well. </p>
+<p>At the end, the “skyline” when viewed from all four directions of the grid,<br>i.e. top, bottom, left, and right, must be the same as the skyline of the original grid.<br>A city’s skyline is the outer contour of the rectangles formed by all the buildings when viewed from a distance. See the following example.</p>
+<p>What is the maximum total sum that the height of the buildings can be increased?</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input: grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]</span><br><span class="line">Output: 35</span><br><span class="line">Explanation: </span><br><span class="line">The grid is:</span><br><span class="line">[ [3, 0, 8, 4], </span><br><span class="line">  [2, 4, 5, 7],</span><br><span class="line">  [9, 2, 6, 3],</span><br><span class="line">  [0, 3, 1, 0] ]</span><br><span class="line"></span><br><span class="line">The skyline viewed from top or bottom is: [9, 4, 8, 7]</span><br><span class="line">The skyline viewed from left or right is: [8, 7, 9, 3]</span><br><span class="line"></span><br><span class="line">The grid after increasing the height of buildings without affecting skylines is:</span><br><span class="line"></span><br><span class="line">gridNew = [ [8, 4, 8, 7],</span><br><span class="line">            [7, 4, 7, 7],</span><br><span class="line">            [9, 4, 8, 7],</span><br><span class="line">            [3, 3, 3, 3] ]</span><br></pre></td></tr></table></figure>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul>
+<li>1 &lt; grid.length = grid[0].length &lt;= 50.</li>
+<li>All heights <code>grid[i][j]</code> are in the range <code>[0, 100]</code>.</li>
+<li>All buildings in <code>grid[i][j]</code> occupy the entire grid cell: that is, they are a <code>1 x 1 x grid[i][j]</code> rectangular prism.</li>
+</ul>
+<hr>
+<h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="Problem-1"><a href="#Problem-1" class="headerlink" title="Problem"></a>Problem</h3><p>在二維陣列 <code>grid</code> 的網格中, 每一個 <code>grid[i][j]</code> 代表著一個在那裏的建築物的高度.<br>我們允許增加任意數量欲增加高度的建築物, 任意的建築物增高量(數量會因為建築物而不同).<br>高度 0 也被認為是一棟建築物.  </p>
+<p>最後, 從 grid 的四個方向所看到的天際線, 即上下左右, 其必須與原本的 grid 的天際線相同.<br>一個城市的天際線是從遠處看過去時, 所有建築物所組成的矩形外部輪廓.<br>看下面例子.  </p>
+<p>請問每棟建築物可以增加的最大量的總和是?</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>grid 是二維陣列, 因此 grid 的長度和 grid[0] 的長度相等, 且範圍為 1 ~ 50 之間.  </li>
+<li>因此每一個值 <code>grid[i][j]</code> 的範圍在 0 ~ 100 之間.  </li>
+<li>每個在 <code>grid[i][j]</code> 的建築物都占據了整個網格單元, 也就是說每個建築物是的 <code>1 x 1 x grid[i][j]</code> 的直角角柱體.  </li>
+</ul>
+<hr>
+<h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[][]&#125; grid</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> grid = [[<span class="number">3</span>, <span class="number">0</span>, <span class="number">8</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>], [<span class="number">9</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>], [<span class="number">0</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">0</span>]];</span><br><span class="line"><span class="keyword">var</span> maxIncreaseKeepingSkyline = <span class="function"><span class="keyword">function</span>(<span class="params">grid</span>) </span>&#123;</span><br><span class="line">	<span class="comment">/** 取得列的數量 */</span></span><br><span class="line">	<span class="keyword">var</span> lengthRow = grid.length;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** 取得行的數量 */</span></span><br><span class="line">	<span class="keyword">var</span> lengthCol = grid[<span class="number">0</span>].length;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** 因為之後會用 Math.max(a, b) 來比較大小</span></span><br><span class="line"><span class="comment">	 *  故存放行列最大值的陣列必須先擺 0 進去.</span></span><br><span class="line"><span class="comment">	 *  ( 因應題目, 從前後左右所看過去的大樓天際線高度必須是不變的 ,</span></span><br><span class="line"><span class="comment">	 *    故必須取得 Row 和 Col 的最大值)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="comment">/** 列方向的天際線最大值 */</span></span><br><span class="line">	<span class="keyword">var</span> maxRow = <span class="built_in">Array</span>(lengthRow).fill(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** 行方向的天際線最大值 */</span></span><br><span class="line">	<span class="keyword">var</span> maxCol = <span class="built_in">Array</span>(lengthCol).fill(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** for 迴圈每一個 Row  */</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> indexRow = <span class="number">0</span>; indexRow &lt; lengthRow; indexRow++) &#123;</span><br><span class="line">		<span class="comment">/** 定義一個 Row, 暫存此二維陣列的第 indexRow 個列*/</span></span><br><span class="line">		<span class="keyword">let</span> Row = grid[indexRow];</span><br><span class="line">		<span class="comment">/** for 迴圈每一個 Row 的每一個值, 數量為行的數量 lengthCol */</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> indexCol = <span class="number">0</span>; indexCol &lt; lengthCol; indexCol++) &#123;</span><br><span class="line">			<span class="comment">/** 定義一個 val, 暫存每一個值 */</span></span><br><span class="line">			<span class="keyword">let</span> val = Row[indexCol];</span><br><span class="line"></span><br><span class="line">			<span class="comment">/** 計算 maxRow 的過程</span></span><br><span class="line"><span class="comment">			 *  Row 迴圈在外, 所以 indexRow 固定, 依照 Col 的數量跑迴圈,</span></span><br><span class="line"><span class="comment">			 *  跟 每一個的值 val 做比較.</span></span><br><span class="line"><span class="comment">			 *  抓出 第 indexRow 的 Row 的最大值.</span></span><br><span class="line"><span class="comment">			 */</span></span><br><span class="line">			maxRow[indexRow] = <span class="built_in">Math</span>.max(maxRow[indexRow], val);</span><br><span class="line"></span><br><span class="line">			<span class="comment">/** 計算 maxCol 的過程</span></span><br><span class="line"><span class="comment">			 *  maxCol 的 indexCol 固定, 跟 每一個的值 val 做比較.</span></span><br><span class="line"><span class="comment">			 *  抓出該 indexCol 在 每一個 Row 的相同位置的最大值.</span></span><br><span class="line"><span class="comment">			 */</span></span><br><span class="line">			maxCol[indexCol] = <span class="built_in">Math</span>.max(maxCol[indexCol], val);</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 最高行與最高列, 與每一個大樓至少到的高度</span></span><br><span class="line">    <span class="comment">// __|_9__4__8__7__</span></span><br><span class="line">    <span class="comment">// 8 | 8, 4, 8, 7</span></span><br><span class="line">    <span class="comment">// 7 | 7, 4, 7, 7</span></span><br><span class="line">    <span class="comment">// 9 | 9, 4, 8, 7</span></span><br><span class="line">    <span class="comment">// 3 | 3, 3, 3, 3</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/** 初始化總和 */</span></span><br><span class="line">	<span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/** 因為要總共要增加樓層高度的總和, 因此再跑一次遍歷的迴圈 */</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> indexRow = <span class="number">0</span>; indexRow &lt; lengthRow; indexRow++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> indexCol = <span class="number">0</span>; indexCol &lt; lengthCol; indexCol++) &#123;</span><br><span class="line">			<span class="comment">/** 每個位置的原始值 */</span></span><br><span class="line">			<span class="keyword">let</span> val = grid[indexRow][indexCol];</span><br><span class="line"></span><br><span class="line">			<span class="comment">/** 題目要求, 從各方向看過去的天際線的高度必須不變,</span></span><br><span class="line"><span class="comment">			 *  因此, 每一棟樓調整的值是該棟大樓的列與行的最小值</span></span><br><span class="line"><span class="comment">			 *  (因為要看的是天際線, 且必須和原本天際線一樣形狀, 故只可取最小值, 同方向只會看到最高的),</span></span><br><span class="line"><span class="comment">			 *  假設我們已經讓其增加到其所在行的最高天際線和其所在列的最高天際線的最小值,</span></span><br><span class="line"><span class="comment">			 *  再將該值與原本矩陣位置的值相減, 變可得出該位置需增加多少.</span></span><br><span class="line"><span class="comment">			 */</span></span><br><span class="line"></span><br><span class="line">			<span class="comment">/** 該大樓至少增加到的高度,</span></span><br><span class="line"><span class="comment">			 *  最高行與最高列的最小值</span></span><br><span class="line"><span class="comment">			 */</span></span><br><span class="line">			<span class="keyword">let</span> new_val = <span class="built_in">Math</span>.min(maxRow[indexRow], maxCol[indexCol]);</span><br><span class="line"></span><br><span class="line">			sum += new_val - val;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/LC-Medium/" rel="tag"># ⓁⒸ - Medium</a>
+          
+            <a href="/tags/⭐⭐/" rel="tag"># ⭐⭐</a>
+          
+            <a href="/tags/Skyline/" rel="tag"># Skyline</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/20/LC-‧‧‧-832-Flipping-an-Image/" rel="next" title="ⓁⒸ ‧‧‧ 832. Flipping an Image">
+                <i class="fa fa-chevron-left"></i> ⓁⒸ ‧‧‧ 832. Flipping an Image
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/20/LC-‧‧‧-654-Maximum-Binary-Tree/" rel="prev" title="ⓁⒸ ‧‧‧ 654. Maximum Binary Tree">
+                ⓁⒸ ‧‧‧ 654. Maximum Binary Tree <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/assets/images/avatar.png" alt="Tobu">
+          <p class="site-author-name" itemprop="name">Tobu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">76</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xTobu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://xtobu.github.io/categories/LeetCode/" target="_blank" title="LeetCode">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  LeetCode
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/junxiang.h/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-instagram"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/junxiang.oriint" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#807-Max-Increase-to-Keep-City-Skyline-保持城市天際線的最大增量"><span class="nav-number">1.</span> <span class="nav-text">807. Max Increase to Keep City Skyline 保持城市天際線的最大增量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-Origin"><span class="nav-number">1.1.</span> <span class="nav-text">❀ Origin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.1.1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">1.1.2.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note"><span class="nav-number">1.1.3.</span> <span class="nav-text">Note</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-翻譯"><span class="nav-number">1.2.</span> <span class="nav-text">❀ 翻譯</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.2.2.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-Solution"><span class="nav-number">1.3.</span> <span class="nav-text">❀ Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.3.1.</span> <span class="nav-text">JavaScript</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tobu</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+  
+
+</body>
+</html>
