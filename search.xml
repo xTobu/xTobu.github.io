@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>《NOTE》Twenty Nineteen：May</title>
+      <link href="/2019/05/27/%E3%80%8ANOTE%E3%80%8BTwenty-Nineteen%EF%BC%9AMay/"/>
+      <url>/2019/05/27/%E3%80%8ANOTE%E3%80%8BTwenty-Nineteen%EF%BC%9AMay/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Terminal"><a href="#Terminal" class="headerlink" title="Terminal"></a>Terminal</h2><h3 id="複製-Output"><a href="#複製-Output" class="headerlink" title="複製 Output"></a>複製 Output</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"Hello world"</span> | pbcopy</span><br><span class="line"><span class="comment"># "Hello world" is now in your clipboard</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Note </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 《NOTE》 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Facebook - Comment Bot Review</title>
       <link href="/2018/08/22/Facebook-Comment-Bot/"/>
       <url>/2018/08/22/Facebook-Comment-Bot/</url>
@@ -1308,9 +1333,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Back-end </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> Node.js </tag>
             
