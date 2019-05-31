@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xtobu.github.io/"/>
-  <updated>2019-05-30T03:46:37.903Z</updated>
+  <updated>2019-05-31T07:47:10.475Z</updated>
   <id>https://xtobu.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://xtobu.github.io/2019/05/28/%E3%80%8ANOTE%E3%80%8B%EF%BC%9ATwenty-Nineteen/"/>
     <id>https://xtobu.github.io/2019/05/28/《NOTE》：Twenty-Nineteen/</id>
     <published>2019-05-28T03:47:52.000Z</published>
-    <updated>2019-05-30T03:46:37.903Z</updated>
+    <updated>2019-05-31T07:47:10.475Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="T-M-NEWA"><a href="#T-M-NEWA" class="headerlink" title="T.M. NEWA"></a>T.M. NEWA</h2><h3 id="Naming-命名規則"><a href="#Naming-命名規則" class="headerlink" title="Naming 命名規則"></a>Naming 命名規則</h3><h4 id="程式"><a href="#程式" class="headerlink" title="程式"></a>程式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Function</span></span><br><span class="line">(X) CheckValidToken</span><br><span class="line">(O) chkToken</span><br><span class="line"></span><br><span class="line"><span class="comment">// Bool</span></span><br><span class="line">(X) TokenValid</span><br><span class="line">(O) isTokenValid</span><br><span class="line">(O) isXXX...</span><br><span class="line"></span><br><span class="line"><span class="comment">// Constant</span></span><br><span class="line">(O) IS_VALID</span><br><span class="line"></span><br><span class="line"><span class="comment">// Array</span></span><br><span class="line">(O) policyItems</span><br><span class="line">(O) Policys</span><br><span class="line">(O) </span><br><span class="line"><span class="comment">// Variable</span></span><br><span class="line">(O) countPolicys</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure><h2 id="Bash"><a href="#Bash" class="headerlink" title="Bash"></a>Bash</h2><h3 id="複製-Output"><a href="#複製-Output" class="headerlink" title="複製 Output"></a>複製 Output</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"Hello world"</span> | pbcopy</span><br><span class="line"><span class="comment"># "Hello world" is now in your clipboard</span></span><br></pre></td></tr></table></figure><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="檢索-Systemd-日誌-Journalctl"><a href="#檢索-Systemd-日誌-Journalctl" class="headerlink" title="檢索 Systemd 日誌 - Journalctl"></a>檢索 Systemd 日誌 - Journalctl</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">journalctl -f --no-pager -n 50 -u &lt;service&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># -u By Unit </span></span><br><span class="line"><span class="comment"># see messages logged by any systemd unit</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -f Follow</span></span><br><span class="line"><span class="comment"># To run journalctl like the Linux tail command so it continuously prints log messages as they are added</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --no-pager</span></span><br><span class="line"><span class="comment"># tell it to not use a pager</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -n &lt;number&gt;</span></span><br><span class="line"><span class="comment"># printing the last number</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="May"><a href="#May" class="headerlink" title="May"></a>May</h1><h2 id="T-M-NEWA"><a href="#T-M-NEWA" class="headerlink" title="T.M. NEWA"></a>T.M. NEWA</h2><h3 id="Naming-命名規則"><a href="#Naming-命名規則" class="headerlink" title="Naming 命名規則"></a>Naming 命名規則</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Function</span></span><br><span class="line">(X) CheckValidToken</span><br><span class="line">(O) chkToken</span><br><span class="line"></span><br><span class="line"><span class="comment">// Bool</span></span><br><span class="line">(X) TokenValid</span><br><span class="line">(O) isTokenValid</span><br><span class="line">(O) isXXX...</span><br><span class="line"></span><br><span class="line"><span class="comment">// Constant</span></span><br><span class="line">(O) IS_VALID</span><br><span class="line"></span><br><span class="line"><span class="comment">// Array</span></span><br><span class="line">(O) policyItems</span><br><span class="line">(O) Policys</span><br><span class="line">(O) </span><br><span class="line"><span class="comment">// Variable</span></span><br><span class="line">(O) countPolicys</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure><h2 id="Bash"><a href="#Bash" class="headerlink" title="Bash"></a>Bash</h2><h3 id="複製-Output"><a href="#複製-Output" class="headerlink" title="複製 Output"></a>複製 Output</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"Hello world"</span> | pbcopy</span><br><span class="line"><span class="comment"># "Hello world" is now in your clipboard</span></span><br></pre></td></tr></table></figure><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="檢索-Systemd-日誌-Journalctl"><a href="#檢索-Systemd-日誌-Journalctl" class="headerlink" title="檢索 Systemd 日誌 - Journalctl"></a>檢索 Systemd 日誌 - Journalctl</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">journalctl -f --no-pager -n 50 -u &lt;service&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># -u By Unit </span></span><br><span class="line"><span class="comment"># see messages logged by any systemd unit</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -f Follow</span></span><br><span class="line"><span class="comment"># To run journalctl like the Linux tail command so it continuously prints log messages as they are added</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --no-pager</span></span><br><span class="line"><span class="comment"># tell it to not use a pager</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -n &lt;number&gt;</span></span><br><span class="line"><span class="comment"># printing the last number</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -516,13 +516,13 @@
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
-      <category term="Array.map()" scheme="https://xtobu.github.io/tags/Array-map/"/>
-    
       <category term="String.split()" scheme="https://xtobu.github.io/tags/String-split/"/>
     
       <category term="Array.reverse()" scheme="https://xtobu.github.io/tags/Array-reverse/"/>
     
       <category term="Array.join()" scheme="https://xtobu.github.io/tags/Array-join/"/>
+    
+      <category term="Array.map()" scheme="https://xtobu.github.io/tags/Array-map/"/>
     
       <category term="String.slice()" scheme="https://xtobu.github.io/tags/String-slice/"/>
     
@@ -554,13 +554,13 @@
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
-      <category term="Array.map()" scheme="https://xtobu.github.io/tags/Array-map/"/>
-    
       <category term="String.split()" scheme="https://xtobu.github.io/tags/String-split/"/>
     
       <category term="Array.reverse()" scheme="https://xtobu.github.io/tags/Array-reverse/"/>
     
       <category term="Array.join()" scheme="https://xtobu.github.io/tags/Array-join/"/>
+    
+      <category term="Array.map()" scheme="https://xtobu.github.io/tags/Array-map/"/>
     
   </entry>
   
