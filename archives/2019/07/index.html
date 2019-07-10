@@ -75,7 +75,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="JavaScript,LeetCode,ⓁⒸ - Easy,Sum,Object,Key,☄️,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -91,18 +91,13 @@
 
 
 
-<meta name="description" content="兩數之和">
-<meta name="keywords" content="JavaScript,LeetCode,ⓁⒸ - Easy,Sum,Object,Key,☄️">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ⓁⒸ ‧‧‧ 1. Two Sum">
-<meta property="og:url" content="https://xtobu.github.io/2018/07/18/LC-‧‧‧-1-Two-Sum/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="jotting">
+<meta property="og:url" content="https://xtobu.github.io/archives/2019/07/index.html">
 <meta property="og:site_name" content="jotting">
-<meta property="og:description" content="兩數之和">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-22T05:51:37.435Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ⓁⒸ ‧‧‧ 1. Two Sum">
-<meta name="twitter:description" content="兩數之和">
+<meta name="twitter:title" content="jotting">
 
 
 
@@ -130,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://xtobu.github.io/2018/07/18/LC-‧‧‧-1-Two-Sum/">
+  <link rel="canonical" href="https://xtobu.github.io/archives/2019/07/">
 
 
 
 
 
-  <title> ⓁⒸ ‧‧‧ 1. Two Sum | jotting </title>
+  <title> Archive | jotting </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -161,7 +156,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -287,200 +282,57 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
 
-  
 
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://xtobu.github.io/2018/07/18/LC-‧‧‧-1-Two-Sum/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="xTobu">
-    <meta itemprop="description" content>
-    <meta itemprop="image" content="/assets/images/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="jotting">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="jotting" src>
-    </span>
-  </span>
 
     
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                ⓁⒸ ‧‧‧ 1. Two Sum
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-18T18:00:40+08:00">
-                2018-07-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  兩數之和
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
 
       
       
-
       
-        <h1 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a><a href="https://leetcode.com/problems/two-sum/description/" target="_blank" rel="noopener">1. Two Sum</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given an array of integers, return <code>indices</code> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <code>exactly</code> one solution, and you may not use the same element twice.</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [2, 7, 11, 15], target = 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個整數陣列, 回傳兩個數字的指數 <code>indices</code> , 而這兩個數字相加必須等於目標數 <code>target</code> .<br>假設每個輸入準確地只會有一組解, 且不能回傳同個數字兩次.</p>
-<hr>
-<h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; target</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> twoSum = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> temp = &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> val;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> index = <span class="number">0</span>; index &lt; nums.length; index++) &#123;</span><br><span class="line">    val = nums[index];</span><br><span class="line">    <span class="comment">// 將 target - 當前 nums[index] 的 val,</span></span><br><span class="line">    <span class="comment">// target 一定是兩數字的相加,</span></span><br><span class="line">    <span class="comment">// 所以如果 temp[target - val] &gt;= 0 , 則代表在 temp 找得到 key</span></span><br><span class="line">    <span class="comment">// 且值大於或等於0 則代表找到了, 即可 return 結果陣列</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//console.log('temp', temp);</span></span><br><span class="line">    <span class="comment">//console.log('temp[target - val]', temp[target - val]);</span></span><br><span class="line">    <span class="keyword">if</span> (temp[target - val] &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> [temp[target - val], index];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 找不到的話, 則將目前的 val, 當作temp的一個 key 去儲存起來,</span></span><br><span class="line">    <span class="comment">// 其 key 的 val 則為目前的index</span></span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      temp[val] = index;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-
-    <div>
       
         
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-          
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
-          
-            <a href="/tags/LC-Easy/" rel="tag"># ⓁⒸ - Easy</a>
-          
-            <a href="/tags/Sum/" rel="tag"># Sum</a>
-          
-            <a href="/tags/Object/" rel="tag"># Object</a>
-          
-            <a href="/tags/Key/" rel="tag"># Key</a>
-          
-            <a href="/tags/☄️/" rel="tag"># ☄️</a>
-          
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2019">2019</h2>
         </div>
       
+      
 
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
         
-      
+            <a class="post-title-link" href="/2019/07/10/LC-‧‧‧-1-Two-Sum/" itemprop="url">
+              
+                <span itemprop="name">ⓁⒸ ‧‧‧ 1. Two Sum</span>
+              
+            </a>
+        
+      </h2>
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/01/08/Get-query-string-values-in-JavaScript/" rel="next" title="Get query string values in JavaScript">
-                <i class="fa fa-chevron-left"></i> Get query string values in JavaScript
-              </a>
-            
-          </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-07-10T10:00:00+08:00" content="2019-07-10">
+          07-10
+        </time>
+      </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/18/LC-‧‧‧-657-Judge-Route-Circle/" rel="prev" title="ⓁⒸ ‧‧‧ 657. Judge Route Circle">
-                ⓁⒸ ‧‧‧ 657. Judge Route Circle <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+    
+
+  </section>
+
+  
+
 
           
           </div>
@@ -488,10 +340,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -511,17 +359,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/assets/images/avatar.png" alt="xTobu">
           <p class="site-author-name" itemprop="name">xTobu</p>
@@ -615,22 +454,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Two-Sum"><span class="nav-number">1.</span> <span class="nav-text">1. Two Sum</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-Origin"><span class="nav-number">1.1.</span> <span class="nav-text">❀ Origin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.1.1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">1.1.2.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-翻譯"><span class="nav-number">1.2.</span> <span class="nav-text">❀ 翻譯</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#問題"><span class="nav-number">1.2.1.</span> <span class="nav-text">問題</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-Solution"><span class="nav-number">1.3.</span> <span class="nav-text">❀ Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.3.1.</span> <span class="nav-text">JavaScript</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -736,9 +559,7 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
+  
 
 
   
