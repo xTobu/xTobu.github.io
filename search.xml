@@ -4,6 +4,41 @@
   
     
     <entry>
+      <title>ⓁⒸ ‧‧‧ 136. Single Number</title>
+      <link href="/2019/07/10/LC-%E2%80%A7%E2%80%A7%E2%80%A7-136-Single-Number/"/>
+      <url>/2019/07/10/LC-%E2%80%A7%E2%80%A7%E2%80%A7-136-Single-Number/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>2019-07-10<br><strong>更新：</strong><br>增加 Golang</p></blockquote><h1 id="136-Single-Number-找出單身狗"><a href="#136-Single-Number-找出單身狗" class="headerlink" title="136. Single Number 找出單身狗"></a><a href="https://leetcode.com/problems/single-number/description/" target="_blank" rel="noopener">136. Single Number 找出單身狗</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a <code>non-empty</code> array of integers, every element appears twice except for one.<br>Find that single one.</p><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul><li>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</li></ul><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [2,2,1]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [4,1,2,1,2]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個非空整數字串, 除了一個元素外, 每個元素會出現兩次.<br>請找出那個單身狗.</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul><li>你的算法應該要有線性的時間複雜度. 你可以完成它, 且不使用額外的記憶體嗎?</li></ul><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 最初的想法,</span></span><br><span class="line"><span class="comment"> * 但題目希望時間複雜度是線性的解答</span></span><br><span class="line"><span class="comment"> * 第一個解法每次都執行了兩次 find index 複雜度</span></span><br><span class="line"><span class="comment"> * O(n^2) 不符合題目要求</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// var singleNumber = function(nums) &#123;</span></span><br><span class="line"><span class="comment">// for (let i = 0; i &lt; nums.length; i++) &#123;</span></span><br><span class="line"><span class="comment">// if (nums.indexOf(nums[i]) == nums.lastIndexOf(nums[i])) return nums[i];</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 網路上大神的解法,</span></span><br><span class="line"><span class="comment"> * 為了讓時間複雜度能更等於 O(n),</span></span><br><span class="line"><span class="comment"> * 那一定只能執行一次, 裡面還不能有任何尋找的動作</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 所以大神使用了 XOR ^ ,</span></span><br><span class="line"><span class="comment"> * 因為 XOR 的特性, 相同為0 不同為1.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * XOR</span></span><br><span class="line"><span class="comment"> * 9 | 1 0 0 1</span></span><br><span class="line"><span class="comment"> * 2 | 0 0 1 0</span></span><br><span class="line"><span class="comment"> * ============</span></span><br><span class="line"><span class="comment"> * 11| 1 0 1 1</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 2 | 0 0 1 0</span></span><br><span class="line"><span class="comment"> * 2 | 0 0 1 0</span></span><br><span class="line"><span class="comment"> * ============</span></span><br><span class="line"><span class="comment"> * 0 | 0 0 0 0</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 還有遵守 交換率</span></span><br><span class="line"><span class="comment"> * 所以 A ^ B ^ C  = (A ^ B) ^ C = A ^ (B ^ C)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 依題目,</span></span><br><span class="line"><span class="comment"> * 陣列會是一對對的數字, 要找出單身狗</span></span><br><span class="line"><span class="comment"> * 那因為 XOR 的關係,</span></span><br><span class="line"><span class="comment"> * 自己跟自己 XOR, 那一定等於零,</span></span><br><span class="line"><span class="comment"> * 而任何數跟零做XOR, 會等於自己.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 所以一對一對的數字 XOR後會等於0,</span></span><br><span class="line"><span class="comment"> * 剩下的會是0跟單身狗 , 答案就是單身狗</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> singleNumber = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line"><span class="comment">// var res = 0;</span></span><br><span class="line"><span class="comment">// for(let i =0 ;i&lt;nums.length;i++)&#123;</span></span><br><span class="line"><span class="comment">// res = res ^ nums[i];</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// return res;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> nums.reduce(<span class="function">(<span class="params">accu, item, index</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="keyword">return</span> accu ^ item;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(singleNumber([<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>]));</span><br></pre></td></tr></table></figure><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">singleNumber</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="params">(res <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line"><span class="keyword">for</span> _, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">res ^= num</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> ⭐ </tag>
+            
+            <tag> Array.reduce() </tag>
+            
+            <tag> XOR </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ⓁⒸ ‧‧‧ 1. Two Sum</title>
       <link href="/2019/07/10/LC-%E2%80%A7%E2%80%A7%E2%80%A7-1-Two-Sum/"/>
       <url>/2019/07/10/LC-%E2%80%A7%E2%80%A7%E2%80%A7-1-Two-Sum/</url>
@@ -24,13 +59,13 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ⓁⒸ - Easy </tag>
-            
             <tag> Sum </tag>
             
             <tag> Object </tag>
             
             <tag> Key </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
             
             <tag> ☄️ </tag>
             
@@ -171,9 +206,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ⓁⒸ - Medium </tag>
-            
             <tag> Recursive </tag>
+            
+            <tag> ⓁⒸ - Medium </tag>
             
             <tag> ⭐⭐ </tag>
             
@@ -278,13 +313,13 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ⭐ </tag>
-            
             <tag> ☄️ </tag>
             
-            <tag> ⓁⒸ - Medium </tag>
+            <tag> ⭐ </tag>
             
             <tag> Recursive </tag>
+            
+            <tag> ⓁⒸ - Medium </tag>
             
             <tag> Iteratively </tag>
             
@@ -319,9 +354,9 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
-            <tag> ⭐ </tag>
-            
             <tag> ☄️ </tag>
+            
+            <tag> ⭐ </tag>
             
             <tag> Array.indexOf() </tag>
             
@@ -387,11 +422,11 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Binary Tree </tag>
-            
             <tag> ⓁⒸ - Easy </tag>
             
             <tag> ☄️ </tag>
+            
+            <tag> Binary Tree </tag>
             
         </tags>
       
@@ -422,9 +457,9 @@
             
             <tag> ⭐ </tag>
             
-            <tag> ⓁⒸ - Medium </tag>
-            
             <tag> Recursive </tag>
+            
+            <tag> ⓁⒸ - Medium </tag>
             
             <tag> ⭐⭐ </tag>
             
@@ -461,48 +496,13 @@
             
             <tag> LeetCode </tag>
             
+            <tag> ⓁⒸ - Easy </tag>
+            
             <tag> Binary Tree </tag>
             
             <tag> Math.max() </tag>
             
-            <tag> ⓁⒸ - Easy </tag>
-            
             <tag> ⭐ </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>ⓁⒸ ‧‧‧ 136. Single Number</title>
-      <link href="/2018/07/20/LC-%E2%80%A7%E2%80%A7%E2%80%A7-136-Single-Number/"/>
-      <url>/2018/07/20/LC-%E2%80%A7%E2%80%A7%E2%80%A7-136-Single-Number/</url>
-      
-        <content type="html"><![CDATA[<h1 id="136-Single-Number-找出單身狗"><a href="#136-Single-Number-找出單身狗" class="headerlink" title="136. Single Number 找出單身狗"></a><a href="https://leetcode.com/problems/single-number/description/" target="_blank" rel="noopener">136. Single Number 找出單身狗</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a <code>non-empty</code> array of integers, every element appears twice except for one.<br>Find that single one.</p><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul><li>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</li></ul><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [2,2,1]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [4,1,2,1,2]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個非空整數字串, 除了一個元素外, 每個元素會出現兩次.<br>請找出那個單身狗.</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul><li>你的算法應該要有線性的時間複雜度. 你可以完成它, 且不使用額外的記憶體嗎?</li></ul><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 最初的想法,</span></span><br><span class="line"><span class="comment"> * 但題目希望時間複雜度是線性的解答</span></span><br><span class="line"><span class="comment"> * 第一個解法每次都執行了兩次 find index 複雜度</span></span><br><span class="line"><span class="comment"> * O(n^2) 不符合題目要求</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// var singleNumber = function(nums) &#123;</span></span><br><span class="line"><span class="comment">// for (let i = 0; i &lt; nums.length; i++) &#123;</span></span><br><span class="line"><span class="comment">// if (nums.indexOf(nums[i]) == nums.lastIndexOf(nums[i])) return nums[i];</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 網路上大神的解法,</span></span><br><span class="line"><span class="comment"> * 為了讓時間複雜度能更等於 O(n),</span></span><br><span class="line"><span class="comment"> * 那一定只能執行一次, 裡面還不能有任何尋找的動作</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 所以大神使用了 XOR ^ ,</span></span><br><span class="line"><span class="comment"> * 因為 XOR 的特性, 相同為0 不同為1.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * XOR</span></span><br><span class="line"><span class="comment"> * 9 | 1 0 0 1</span></span><br><span class="line"><span class="comment"> * 2 | 0 0 1 0</span></span><br><span class="line"><span class="comment"> * ============</span></span><br><span class="line"><span class="comment"> * 11| 1 0 1 1</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 2 | 0 0 1 0</span></span><br><span class="line"><span class="comment"> * 2 | 0 0 1 0</span></span><br><span class="line"><span class="comment"> * ============</span></span><br><span class="line"><span class="comment"> * 0 | 0 0 0 0</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 還有遵守 交換率</span></span><br><span class="line"><span class="comment"> * 所以 A ^ B ^ C  = (A ^ B) ^ C = A ^ (B ^ C)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 依題目,</span></span><br><span class="line"><span class="comment"> * 陣列會是一對對的數字, 要找出單身狗</span></span><br><span class="line"><span class="comment"> * 那因為 XOR 的關係,</span></span><br><span class="line"><span class="comment"> * 自己跟自己 XOR, 那一定等於零,</span></span><br><span class="line"><span class="comment"> * 而任何數跟零做XOR, 會等於自己.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 所以一對一對的數字 XOR後會等於0,</span></span><br><span class="line"><span class="comment"> * 剩下的會是0跟單身狗 , 答案就是單身狗</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> singleNumber = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line"><span class="comment">// var res = 0;</span></span><br><span class="line"><span class="comment">// for(let i =0 ;i&lt;nums.length;i++)&#123;</span></span><br><span class="line"><span class="comment">// res = res ^ nums[i];</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// return res;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> nums.reduce(<span class="function">(<span class="params">accu, item, index</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="keyword">return</span> accu ^ item;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(singleNumber([<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>]));</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> LeetCode </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> JavaScript </tag>
-            
-            <tag> LeetCode </tag>
-            
-            <tag> ⓁⒸ - Easy </tag>
-            
-            <tag> ⭐ </tag>
-            
-            <tag> Array.reduce() </tag>
-            
-            <tag> XOR </tag>
             
         </tags>
       
@@ -572,13 +572,13 @@
             
             <tag> ☄️ </tag>
             
-            <tag> Array.map() </tag>
-            
             <tag> String.split() </tag>
             
             <tag> Array.reverse() </tag>
             
             <tag> Array.join() </tag>
+            
+            <tag> Array.map() </tag>
             
             <tag> String.slice() </tag>
             
@@ -613,13 +613,13 @@
             
             <tag> ☄️ </tag>
             
-            <tag> Array.map() </tag>
-            
             <tag> String.split() </tag>
             
             <tag> Array.reverse() </tag>
             
             <tag> Array.join() </tag>
+            
+            <tag> Array.map() </tag>
             
         </tags>
       
@@ -722,9 +722,9 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
-            <tag> XOR </tag>
-            
             <tag> ☄️ </tag>
+            
+            <tag> XOR </tag>
             
             <tag> Math.pow() </tag>
             
@@ -792,9 +792,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Math.max() </tag>
-            
             <tag> ☄️ </tag>
+            
+            <tag> Math.max() </tag>
             
             <tag> ⓁⒸ - Medium </tag>
             
@@ -862,9 +862,9 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
-            <tag> Array.reduce() </tag>
-            
             <tag> ☄️ </tag>
+            
+            <tag> Array.reduce() </tag>
             
             <tag> Array.keys() </tag>
             
@@ -932,9 +932,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Binary Tree </tag>
-            
             <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> Binary Tree </tag>
             
             <tag> ⭐ </tag>
             
@@ -1039,9 +1039,9 @@
             
             <tag> ⭐ </tag>
             
-            <tag> ⓁⒸ - Medium </tag>
-            
             <tag> Recursive </tag>
+            
+            <tag> ⓁⒸ - Medium </tag>
             
             <tag> Array.slice() </tag>
             
@@ -1111,9 +1111,9 @@
             
             <tag> ☄️ </tag>
             
-            <tag> Array.map() </tag>
-            
             <tag> Array.reverse() </tag>
+            
+            <tag> Array.map() </tag>
             
         </tags>
       
@@ -1144,9 +1144,9 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
-            <tag> Array.reduce() </tag>
-            
             <tag> ☄️ </tag>
+            
+            <tag> Array.reduce() </tag>
             
             <tag> Object.keys() </tag>
             
@@ -1181,9 +1181,9 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
-            <tag> Array.reduce() </tag>
-            
             <tag> ☄️ </tag>
+            
+            <tag> Array.reduce() </tag>
             
             <tag> String.split() </tag>
             
@@ -1285,7 +1285,7 @@
       <link href="/2017/10/25/List-rendering-with-array-map-React/"/>
       <url>/2017/10/25/List-rendering-with-array-map-React/</url>
       
-        <content type="html"><![CDATA[<h3 id="加入JSX，結合原生JavaScript語法"><a href="#加入JSX，結合原生JavaScript語法" class="headerlink" title="加入JSX，結合原生JavaScript語法"></a>加入JSX，結合原生JavaScript語法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">getInitialState() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            details: &#123;</span><br><span class="line">                tw: &#123;</span><br><span class="line">                    form: [</span><br><span class="line">                        &#123; <span class="attr">name</span>: <span class="string">'coutry'</span>, <span class="attr">type</span>: <span class="number">1</span>, <span class="attr">des</span>: <span class="string">'國家'</span>, <span class="attr">ans</span>:  [<span class="string">'區域獨家代理'</span>, <span class="string">'代理'</span>]  &#125;,</span><br><span class="line">                        &#123; <span class="attr">name</span>: <span class="string">'mode'</span>, <span class="attr">type</span>: <span class="number">2</span>, <span class="attr">des</span>: <span class="string">'模式'</span>, <span class="attr">ans</span>: [<span class="string">'區域獨家代理'</span>, <span class="string">'代理'</span>] &#125;,</span><br><span class="line">                        &#123; <span class="attr">name</span>: <span class="string">'state'</span>, <span class="attr">type</span>: <span class="number">4</span>, <span class="attr">des</span>: <span class="string">'洲別'</span>, <span class="attr">ans</span>: [<span class="string">'美洲'</span>, <span class="string">'亞洲'</span>, <span class="string">'歐洲'</span>] &#125;,</span><br><span class="line">                    ],</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    render() &#123;        </span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          &lt;div&gt;</span><br><span class="line">            &lt;ul className=<span class="string">"form"</span>&gt;</span><br><span class="line">              &#123;<span class="keyword">this</span>.state.details[<span class="keyword">this</span>.props.langVal].form.map(<span class="function">(<span class="params">item, key</span>) =&gt;</span> &#123;               </span><br><span class="line">               <span class="keyword">switch</span>(item.type)&#123;</span><br><span class="line">                   <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                   <span class="keyword">return</span> (</span><br><span class="line">                        &lt;li key=&#123;key&#125; &gt;<span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">&#123;item.des&#125;</span> /&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">                      );</span><br><span class="line">                   <span class="keyword">break</span>;                   </span><br><span class="line">                   <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                   <span class="keyword">return</span> (</span><br><span class="line">                        &lt;li key=&#123;key&#125; &gt;</span><br><span class="line">                            &lt;input type=<span class="string">"text"</span> placeholder=&#123;item.des&#125; /&gt;</span><br><span class="line">                            &lt;select name=<span class="string">""</span>&gt;</span><br><span class="line">                            &#123;</span><br><span class="line">                                item.ans.map(<span class="function"><span class="keyword">function</span>(<span class="params">value, index</span>)</span>&#123;</span><br><span class="line">                                    <span class="keyword">return</span> (</span><br><span class="line">                                        &lt;option value=&#123;index&#125;&gt;&#123;value&#125;&lt;<span class="regexp">/option&gt;</span></span><br><span class="line"><span class="regexp">                                    )</span></span><br><span class="line"><span class="regexp">                                &#125;)</span></span><br><span class="line"><span class="regexp">                            &#125;</span></span><br><span class="line"><span class="regexp">                            &lt;/</span>select&gt; </span><br><span class="line">                        &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">                      );</span></span><br><span class="line"><span class="regexp">                   break;</span></span><br><span class="line"><span class="regexp">               &#125;                  </span></span><br><span class="line"><span class="regexp">              &#125;)&#125;</span></span><br><span class="line"><span class="regexp">            &lt;/u</span>l&gt;</span><br><span class="line">          &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br></pre></td></tr></table></figure><hr><p>一個JSX的語法糖裡，只能做一次return （不確定）<br>做第二次array.map()時，必須先包一層HTML Tag （不確定）</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="加入JSX，結合原生JavaScript語法"><a href="#加入JSX，結合原生JavaScript語法" class="headerlink" title="加入JSX，結合原生JavaScript語法"></a>加入JSX，結合原生JavaScript語法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">getInitialState() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            details: &#123;</span><br><span class="line">                tw: &#123;</span><br><span class="line">                    form: [</span><br><span class="line">                        &#123; <span class="attr">name</span>: <span class="string">'coutry'</span>, <span class="attr">type</span>: <span class="number">1</span>, <span class="attr">des</span>: <span class="string">'國家'</span>, <span class="attr">ans</span>:  [<span class="string">'區域獨家代理'</span>, <span class="string">'代理'</span>]  &#125;,</span><br><span class="line">                        &#123; <span class="attr">name</span>: <span class="string">'mode'</span>, <span class="attr">type</span>: <span class="number">2</span>, <span class="attr">des</span>: <span class="string">'模式'</span>, <span class="attr">ans</span>: [<span class="string">'區域獨家代理'</span>, <span class="string">'代理'</span>] &#125;,</span><br><span class="line">                        &#123; <span class="attr">name</span>: <span class="string">'state'</span>, <span class="attr">type</span>: <span class="number">4</span>, <span class="attr">des</span>: <span class="string">'洲別'</span>, <span class="attr">ans</span>: [<span class="string">'美洲'</span>, <span class="string">'亞洲'</span>, <span class="string">'歐洲'</span>] &#125;,</span><br><span class="line">                    ],</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    render() &#123;        </span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          &lt;div&gt;</span><br><span class="line">            &lt;ul className=<span class="string">"form"</span>&gt;</span><br><span class="line">              &#123;<span class="keyword">this</span>.state.details[<span class="keyword">this</span>.props.langVal].form.map(<span class="function">(<span class="params">item, key</span>) =&gt;</span> &#123;               </span><br><span class="line">               <span class="keyword">switch</span>(item.type)&#123;</span><br><span class="line">                   <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                   <span class="keyword">return</span> (</span><br><span class="line">                        &lt;li key=&#123;key&#125; &gt;&lt;input type="text" placeholder=&#123;item.des&#125; /&gt;&lt;/li&gt;</span><br><span class="line">                      );</span><br><span class="line">                   <span class="keyword">break</span>;                   </span><br><span class="line">                   <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                   <span class="keyword">return</span> (</span><br><span class="line">                        &lt;li key=&#123;key&#125; &gt;</span><br><span class="line">                            &lt;input type=<span class="string">"text"</span> placeholder=&#123;item.des&#125; /&gt;</span><br><span class="line">                            &lt;select name=<span class="string">""</span>&gt;</span><br><span class="line">                            &#123;</span><br><span class="line">                                item.ans.map(<span class="function"><span class="keyword">function</span>(<span class="params">value, index</span>)</span>&#123;</span><br><span class="line">                                    <span class="keyword">return</span> (</span><br><span class="line">                                        &lt;option value=&#123;index&#125;&gt;&#123;value&#125;&lt;<span class="regexp">/option&gt;</span></span><br><span class="line"><span class="regexp">                                    )</span></span><br><span class="line"><span class="regexp">                                &#125;)</span></span><br><span class="line"><span class="regexp">                            &#125;</span></span><br><span class="line"><span class="regexp">                            &lt;/</span>select&gt; </span><br><span class="line">                        &lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">                      );</span></span><br><span class="line"><span class="regexp">                   break;</span></span><br><span class="line"><span class="regexp">               &#125;                  </span></span><br><span class="line"><span class="regexp">              &#125;)&#125;</span></span><br><span class="line"><span class="regexp">            &lt;/u</span>l&gt;</span><br><span class="line">          &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br></pre></td></tr></table></figure><hr><p>一個JSX的語法糖裡，只能做一次return （不確定）<br>做第二次array.map()時，必須先包一層HTML Tag （不確定）</p>]]></content>
       
       
       
