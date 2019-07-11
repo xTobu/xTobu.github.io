@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>ⓁⒸ ‧‧‧ 189. Rotate Array</title>
+      <link href="/2019/07/11/LC-%E2%80%A7%E2%80%A7%E2%80%A7-189-Rotate-Array/"/>
+      <url>/2019/07/11/LC-%E2%80%A7%E2%80%A7%E2%80%A7-189-Rotate-Array/</url>
+      
+        <content type="html"><![CDATA[<h1 id="189-Rotate-Array"><a href="#189-Rotate-Array" class="headerlink" title="189. Rotate Array"></a><a href="https://leetcode.com/problems/rotate-array/" target="_blank" rel="noopener">189. Rotate Array</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given an array, rotate the array to the right by k steps, where k is non-negative.</p><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4,5,6,7] and k = 3</span><br><span class="line">Output: [5,6,7,1,2,3,4]</span><br><span class="line">Explanation:</span><br><span class="line">rotate 1 steps to the right: [7,1,2,3,4,5,6]</span><br><span class="line">rotate 2 steps to the right: [6,7,1,2,3,4,5]</span><br><span class="line">rotate 3 steps to the right: [5,6,7,1,2,3,4]</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [-1,-100,3,99] and k = 2</span><br><span class="line">Output: [3,99,-1,-100]</span><br><span class="line">Explanation: </span><br><span class="line">rotate 1 steps to the right: [99,-1,-100,3]</span><br><span class="line">rotate 2 steps to the right: [3,99,-1,-100]</span><br></pre></td></tr></table></figure><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul><li>Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.</li><li>Could you do it in-place with O(1) extra space?</li></ul><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個陣列，<br>將陣列往右旋轉 k 個階段，<br>其中 k 為非負數。</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul><li>盡你可能地提出解決方式，這裏至少有 3 種不同的方式能解決這問題。</li><li>你可以在時間複雜度 O(1) 額外空間的情況下做到嗎？</li></ul><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">rotate</span><span class="params">(nums []<span class="keyword">int</span>, k <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">  <span class="comment">// 取出 nums 的總長</span></span><br><span class="line">  <span class="keyword">var</span> lenNums <span class="keyword">int</span> = <span class="built_in">len</span>(nums)</span><br><span class="line">  <span class="comment">// 將 k 除與 lenNums 並取其 餘數 設為 k (steps)</span></span><br><span class="line">  k %= lenNums</span><br><span class="line">  <span class="keyword">if</span> k == <span class="number">0</span> &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// nums 已 k 為範圍分前後兩部分，並將其相反 append 進 temp</span></span><br><span class="line">  <span class="comment">// 關於後面三個點：</span></span><br><span class="line">  <span class="comment">// func append(slice []Type, elems ...Type) []Type</span></span><br><span class="line">  <span class="comment">// append 第一個可以擺 slice，但往後則是擺和第一個 slice 一樣 Type 的 數個 value </span></span><br><span class="line">  <span class="comment">// 故後面必須加上 ... 將 slice 打散後加入 append 。</span></span><br><span class="line">  <span class="comment">// 參照：</span></span><br><span class="line">  <span class="comment">// https://github.com/zhangyachen/zhangyachen.github.io/issues/137</span></span><br><span class="line">  <span class="comment">// https://coderwall.com/p/tlnhmg/appending-two-slices-in-go-what-s-with-that</span></span><br><span class="line">  tmp := <span class="built_in">append</span>(nums[lenNums-k:], nums[<span class="number">0</span>:lenNums-k]...)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 將 nums 設置回去</span></span><br><span class="line">  <span class="keyword">for</span> index, value := <span class="keyword">range</span> tmp &#123;</span><br><span class="line">    nums[index] = value</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> Golang </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> ☄️ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ⓁⒸ ‧‧‧ 136. Single Number</title>
       <link href="/2019/07/10/LC-%E2%80%A7%E2%80%A7%E2%80%A7-136-Single-Number/"/>
       <url>/2019/07/10/LC-%E2%80%A7%E2%80%A7%E2%80%A7-136-Single-Number/</url>
@@ -22,17 +53,17 @@
             
             <tag> JavaScript </tag>
             
-            <tag> Golang </tag>
-            
             <tag> LeetCode </tag>
             
-            <tag> ⓁⒸ - Easy </tag>
+            <tag> Golang </tag>
             
-            <tag> ⭐ </tag>
+            <tag> ⓁⒸ - Easy </tag>
             
             <tag> Array.reduce() </tag>
             
             <tag> XOR </tag>
+            
+            <tag> ⭐ </tag>
             
         </tags>
       
@@ -59,9 +90,9 @@
             
             <tag> JavaScript </tag>
             
-            <tag> Golang </tag>
-            
             <tag> LeetCode </tag>
+            
+            <tag> Golang </tag>
             
             <tag> Sum </tag>
             
@@ -241,9 +272,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ⭐ </tag>
-            
             <tag> Array.reduce() </tag>
+            
+            <tag> ⭐ </tag>
             
             <tag> ⓁⒸ - Medium </tag>
             
@@ -500,11 +531,11 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
+            <tag> ⭐ </tag>
+            
             <tag> Binary Tree </tag>
             
             <tag> Math.max() </tag>
-            
-            <tag> ⭐ </tag>
             
         </tags>
       
@@ -533,15 +564,15 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ⭐ </tag>
-            
             <tag> Array.reduce() </tag>
+            
+            <tag> ⭐ </tag>
             
             <tag> ⓁⒸ - Medium </tag>
             
-            <tag> Array.splice() </tag>
-            
             <tag> Array.sort() </tag>
+            
+            <tag> Array.splice() </tag>
             
         </tags>
       
@@ -574,13 +605,13 @@
             
             <tag> ☄️ </tag>
             
+            <tag> Array.map() </tag>
+            
             <tag> String.split() </tag>
             
             <tag> Array.reverse() </tag>
             
             <tag> Array.join() </tag>
-            
-            <tag> Array.map() </tag>
             
             <tag> String.slice() </tag>
             
@@ -615,13 +646,13 @@
             
             <tag> ☄️ </tag>
             
+            <tag> Array.map() </tag>
+            
             <tag> String.split() </tag>
             
             <tag> Array.reverse() </tag>
             
             <tag> Array.join() </tag>
-            
-            <tag> Array.map() </tag>
             
         </tags>
       
@@ -796,9 +827,9 @@
             
             <tag> ☄️ </tag>
             
-            <tag> Math.max() </tag>
-            
             <tag> ⓁⒸ - Medium </tag>
+            
+            <tag> Math.max() </tag>
             
             <tag> String.lastIndexOf() </tag>
             
@@ -936,9 +967,9 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
-            <tag> Binary Tree </tag>
-            
             <tag> ⭐ </tag>
+            
+            <tag> Binary Tree </tag>
             
         </tags>
       
@@ -967,11 +998,11 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Binary Tree </tag>
-            
             <tag> ⭐ </tag>
             
             <tag> ⓁⒸ - Medium </tag>
+            
+            <tag> Binary Tree </tag>
             
         </tags>
       
@@ -1002,9 +1033,9 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
-            <tag> ⭐ </tag>
-            
             <tag> XOR </tag>
+            
+            <tag> ⭐ </tag>
             
             <tag> While </tag>
             
@@ -1035,17 +1066,17 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Binary Tree </tag>
-            
-            <tag> Math.max() </tag>
-            
             <tag> ⭐ </tag>
             
             <tag> Recursive </tag>
             
             <tag> ⓁⒸ - Medium </tag>
             
+            <tag> Binary Tree </tag>
+            
             <tag> Array.slice() </tag>
+            
+            <tag> Math.max() </tag>
             
             <tag> Array.index() </tag>
             
@@ -1113,9 +1144,9 @@
             
             <tag> ☄️ </tag>
             
-            <tag> Array.reverse() </tag>
-            
             <tag> Array.map() </tag>
+            
+            <tag> Array.reverse() </tag>
             
         </tags>
       
@@ -1335,9 +1366,9 @@
       
         <tags>
             
-            <tag> Back-end </tag>
-            
             <tag> JavaScript </tag>
+            
+            <tag> Back-end </tag>
             
             <tag> Node.js </tag>
             

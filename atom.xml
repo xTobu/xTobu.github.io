@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xtobu.github.io/"/>
-  <updated>2019-07-10T02:41:50.234Z</updated>
+  <updated>2019-07-11T03:26:11.237Z</updated>
   <id>https://xtobu.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ⓁⒸ ‧‧‧ 189. Rotate Array</title>
+    <link href="https://xtobu.github.io/2019/07/11/LC-%E2%80%A7%E2%80%A7%E2%80%A7-189-Rotate-Array/"/>
+    <id>https://xtobu.github.io/2019/07/11/LC-‧‧‧-189-Rotate-Array/</id>
+    <published>2019-07-11T01:20:50.000Z</published>
+    <updated>2019-07-11T03:26:11.237Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="189-Rotate-Array"><a href="#189-Rotate-Array" class="headerlink" title="189. Rotate Array"></a><a href="https://leetcode.com/problems/rotate-array/" target="_blank" rel="noopener">189. Rotate Array</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given an array, rotate the array to the right by k steps, where k is non-negative.</p><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4,5,6,7] and k = 3</span><br><span class="line">Output: [5,6,7,1,2,3,4]</span><br><span class="line">Explanation:</span><br><span class="line">rotate 1 steps to the right: [7,1,2,3,4,5,6]</span><br><span class="line">rotate 2 steps to the right: [6,7,1,2,3,4,5]</span><br><span class="line">rotate 3 steps to the right: [5,6,7,1,2,3,4]</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [-1,-100,3,99] and k = 2</span><br><span class="line">Output: [3,99,-1,-100]</span><br><span class="line">Explanation: </span><br><span class="line">rotate 1 steps to the right: [99,-1,-100,3]</span><br><span class="line">rotate 2 steps to the right: [3,99,-1,-100]</span><br></pre></td></tr></table></figure><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul><li>Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.</li><li>Could you do it in-place with O(1) extra space?</li></ul><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個陣列，<br>將陣列往右旋轉 k 個階段，<br>其中 k 為非負數。</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul><li>盡你可能地提出解決方式，這裏至少有 3 種不同的方式能解決這問題。</li><li>你可以在時間複雜度 O(1) 額外空間的情況下做到嗎？</li></ul><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">rotate</span><span class="params">(nums []<span class="keyword">int</span>, k <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">  <span class="comment">// 取出 nums 的總長</span></span><br><span class="line">  <span class="keyword">var</span> lenNums <span class="keyword">int</span> = <span class="built_in">len</span>(nums)</span><br><span class="line">  <span class="comment">// 將 k 除與 lenNums 並取其 餘數 設為 k (steps)</span></span><br><span class="line">  k %= lenNums</span><br><span class="line">  <span class="keyword">if</span> k == <span class="number">0</span> &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// nums 已 k 為範圍分前後兩部分，並將其相反 append 進 temp</span></span><br><span class="line">  <span class="comment">// 關於後面三個點：</span></span><br><span class="line">  <span class="comment">// func append(slice []Type, elems ...Type) []Type</span></span><br><span class="line">  <span class="comment">// append 第一個可以擺 slice，但往後則是擺和第一個 slice 一樣 Type 的 數個 value </span></span><br><span class="line">  <span class="comment">// 故後面必須加上 ... 將 slice 打散後加入 append 。</span></span><br><span class="line">  <span class="comment">// 參照：</span></span><br><span class="line">  <span class="comment">// https://github.com/zhangyachen/zhangyachen.github.io/issues/137</span></span><br><span class="line">  <span class="comment">// https://coderwall.com/p/tlnhmg/appending-two-slices-in-go-what-s-with-that</span></span><br><span class="line">  tmp := <span class="built_in">append</span>(nums[lenNums-k:], nums[<span class="number">0</span>:lenNums-k]...)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 將 nums 設置回去</span></span><br><span class="line">  <span class="keyword">for</span> index, value := <span class="keyword">range</span> tmp &#123;</span><br><span class="line">    nums[index] = value</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      旋轉陣列
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
+    
+      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>ⓁⒸ ‧‧‧ 136. Single Number</title>
@@ -36,17 +64,17 @@
     
       <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
     
-      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
-    
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
-      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
     
-      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
+      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
       <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
     
       <category term="XOR" scheme="https://xtobu.github.io/tags/XOR/"/>
+    
+      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
     
   </entry>
   
@@ -55,7 +83,7 @@
     <link href="https://xtobu.github.io/2019/07/10/LC-%E2%80%A7%E2%80%A7%E2%80%A7-1-Two-Sum/"/>
     <id>https://xtobu.github.io/2019/07/10/LC-‧‧‧-1-Two-Sum/</id>
     <published>2019-07-10T02:00:00.000Z</published>
-    <updated>2019-07-10T02:41:54.964Z</updated>
+    <updated>2019-07-11T01:28:09.300Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>2019-07-10<br><strong>更新：</strong><br>增加 Golang</p></blockquote><h1 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1. Two Sum"></a><a href="https://leetcode.com/problems/two-sum/description/" target="_blank" rel="noopener">1. Two Sum</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given an array of integers, return <code>indices</code> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <code>exactly</code> one solution, and you may not use the same element twice.</p><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [2, 7, 11, 15], target = 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個整數陣列, 回傳兩個數字的指數 <code>indices</code> , 而這兩個數字相加必須等於目標數 <code>target</code> .<br>假設每個輸入準確地只會有一組解, 且不能回傳同個數字兩次.</p><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; target</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> twoSum = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> temp = &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> val;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> index = <span class="number">0</span>; index &lt; nums.length; index++) &#123;</span><br><span class="line">    val = nums[index];</span><br><span class="line">    <span class="comment">// 將 target - 當前 nums[index] 的 val,</span></span><br><span class="line">    <span class="comment">// target 一定是兩數字的相加,</span></span><br><span class="line">    <span class="comment">// 所以如果 temp[target - val] &gt;= 0 , 則代表在 temp 找得到 key</span></span><br><span class="line">    <span class="comment">// 且值大於或等於0 則代表找到了, 即可 return 結果陣列</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//console.log('temp', temp);</span></span><br><span class="line">    <span class="comment">//console.log('temp[target - val]', temp[target - val]);</span></span><br><span class="line">    <span class="keyword">if</span> (temp[target - val] &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> [temp[target - val], index];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 找不到的話, 則將目前的 val, 當作temp的一個 key 去儲存起來,</span></span><br><span class="line">    <span class="comment">// 其 key 的 val 則為目前的index</span></span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      temp[val] = index;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="keyword">int</span>, target <span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line"><span class="comment">// 使用 make 建立一個空 map , 並設置 key 和 value 的型態</span></span><br><span class="line">temp := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line"><span class="keyword">for</span> index, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line"><span class="comment">// 取 temp[target-num] 的值（某 num 的 index），</span></span><br><span class="line"><span class="comment">// 如果有值則代表在 for 迴圈的前某次，有儲存過了 target 和當下 num 的 差，</span></span><br><span class="line"><span class="comment">// 意味在 temp 找得到 num 的另一半，</span></span><br><span class="line"><span class="comment">// 於是可以回傳兩者的位置，則為答案。</span></span><br><span class="line"><span class="keyword">if</span> value, ok := temp[target-num]; ok &#123;</span><br><span class="line"><span class="keyword">return</span> []<span class="keyword">int</span>&#123;value, index&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果沒有值，</span></span><br><span class="line"><span class="comment">// 則將當前的 num 作為 key; 其 index 作為 value ,</span></span><br><span class="line"><span class="comment">// 存進 temp 裡，</span></span><br><span class="line"><span class="comment">// 等待 range 的下一個 num 來比對。</span></span><br><span class="line">temp[num] = index</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// func 設定了欲回傳型態，</span></span><br><span class="line"><span class="comment">// 於是沒有結果的話，還是得回傳 nil</span></span><br><span class="line"><span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -70,9 +98,9 @@
     
       <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
     
-      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
-    
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
     
       <category term="Sum" scheme="https://xtobu.github.io/tags/Sum/"/>
     
@@ -229,7 +257,7 @@
     <link href="https://xtobu.github.io/2018/07/20/LC-%E2%80%A7%E2%80%A7%E2%80%A7-347-Top-K-Frequent-Elements/"/>
     <id>https://xtobu.github.io/2018/07/20/LC-‧‧‧-347-Top-K-Frequent-Elements/</id>
     <published>2018-07-20T12:41:28.000Z</published>
-    <updated>2019-04-22T05:51:37.436Z</updated>
+    <updated>2019-07-11T03:19:50.633Z</updated>
     
     <content type="html"><![CDATA[<h1 id="347-Top-K-Frequent-Elements-前-K-個頻繁出現的元素"><a href="#347-Top-K-Frequent-Elements-前-K-個頻繁出現的元素" class="headerlink" title="347. Top K Frequent Elements 前 K 個頻繁出現的元素"></a><a href="https://leetcode.com/problems/top-k-frequent-elements/description/" target="_blank" rel="noopener">347. Top K Frequent Elements 前 K 個頻繁出現的元素</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a non-empty array of integers, return the <strong>k</strong> most frequent elements.</p><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:  nums = [1,1,1,2,2,3], k = 2</span><br><span class="line">Output: [1,2]</span><br></pre></td></tr></table></figure><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul><li>You may assume _k_ is always valid, 1 ≤ _k_ ≤ number of unique elements.</li><li>Your algorithm’s time complexity <strong>must be</strong> better than O(<em>n</em> log <em>n</em>), where <em>n</em> is the array’s size.</li></ul><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個非空的整數陣列, 回傳 <strong>k</strong> 個最頻繁出現的元素.</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul><li>你可以假設 _k_ 始終有效, 1 ≤ _k_ ≤ 獨一無二的元素的數量</li><li>你算法的時間複雜度<strong>必須</strong>優於 O(<em>n</em> log <em>n</em>), 其中 <em>n</em> 是陣列的大小.</li></ul><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; k</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> topKFrequent = <span class="function"><span class="keyword">function</span>(<span class="params">nums, k</span>) </span>&#123;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用 obj 或 Map() 的方式來計算每個元素出現了幾次</span></span><br><span class="line"><span class="comment"> * 將陣列元素的值當作物件 obj 的 key ( obj[value] )</span></span><br><span class="line"><span class="comment"> * obj 的 value 則為次數</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> freqs = nums.reduce(<span class="function">(<span class="params">obj, value</span>) =&gt;</span> &#123;</span><br><span class="line">obj[value] = obj[value] + <span class="number">1</span> || <span class="number">1</span>;</span><br><span class="line"><span class="keyword">return</span> obj;</span><br><span class="line">&#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用 freqs 新建一個 Object.keys()</span></span><br><span class="line"><span class="comment"> * 並搭配 freqs 做排序</span></span><br><span class="line"><span class="comment"> * 之後以 slice() 取到目標數量 k</span></span><br><span class="line"><span class="comment"> * 再用 map() 整理新的陣列,</span></span><br><span class="line"><span class="comment"> * 因為Object.keys()的關係, 故用 Number(key) 傳入 key</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">return</span> <span class="built_in">Object</span>.keys(freqs)</span><br><span class="line">.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> freqs[b] - freqs[a])</span><br><span class="line">.slice(<span class="number">0</span>, k)</span><br><span class="line">.map(<span class="function"><span class="params">key</span> =&gt;</span> <span class="built_in">Number</span>(key));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nums = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> k = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(topKFrequent(nums, k));</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 別種方式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// var topKFrequent = function(nums, k) &#123;</span></span><br><span class="line"><span class="comment">// var hash = &#123;&#125;,</span></span><br><span class="line"><span class="comment">// res = [];</span></span><br><span class="line"><span class="comment">// nums.forEach(function(value) &#123;</span></span><br><span class="line"><span class="comment">// hash[value] = hash[value] + 1 || 1;</span></span><br><span class="line"><span class="comment">// &#125;);</span></span><br><span class="line"><span class="comment">// Object.keys(hash)</span></span><br><span class="line"><span class="comment">// .sort(function(a, b) &#123;</span></span><br><span class="line"><span class="comment">// return hash[b] - hash[a];</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"><span class="comment">// .slice(0, k)</span></span><br><span class="line"><span class="comment">// .forEach(function(x) &#123;</span></span><br><span class="line"><span class="comment">// res.push(parseInt(x));</span></span><br><span class="line"><span class="comment">// &#125;);</span></span><br><span class="line"><span class="comment">// return res;</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// var topKFrequent = function(nums, k) &#123;</span></span><br><span class="line"><span class="comment">//     const freqs = nums.reduce((map, value) =&gt; &#123;</span></span><br><span class="line"><span class="comment">//         if(map.has(value)) &#123;</span></span><br><span class="line"><span class="comment">//             map.set(value, map.get(value) + 1)</span></span><br><span class="line"><span class="comment">//         &#125; else &#123;</span></span><br><span class="line"><span class="comment">//             map.set(value, 1)</span></span><br><span class="line"><span class="comment">//         &#125;</span></span><br><span class="line"><span class="comment">//         return map;</span></span><br><span class="line"><span class="comment">//     &#125;, new Map());</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//     return Array</span></span><br><span class="line"><span class="comment">//         .from(freqs.entries())</span></span><br><span class="line"><span class="comment">//         .sort((entry1, entry2) =&gt; entry2[1] - entry1[1])</span></span><br><span class="line"><span class="comment">//         .slice(0,k)</span></span><br><span class="line"><span class="comment">//         .map(entry =&gt; entry[0])</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br></pre></td></tr></table></figure>]]></content>
     
@@ -246,9 +274,9 @@
     
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
-      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
-    
       <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
+    
+      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
     
       <category term="ⓁⒸ - Medium" scheme="https://xtobu.github.io/tags/LC-Medium/"/>
     
@@ -484,11 +512,11 @@
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
+      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
+    
       <category term="Binary Tree" scheme="https://xtobu.github.io/tags/Binary-Tree/"/>
     
       <category term="Math.max()" scheme="https://xtobu.github.io/tags/Math-max/"/>
-    
-      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
     
   </entry>
   
@@ -514,15 +542,15 @@
     
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
-      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
-    
       <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
+    
+      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
     
       <category term="ⓁⒸ - Medium" scheme="https://xtobu.github.io/tags/LC-Medium/"/>
     
-      <category term="Array.splice()" scheme="https://xtobu.github.io/tags/Array-splice/"/>
-    
       <category term="Array.sort()" scheme="https://xtobu.github.io/tags/Array-sort/"/>
+    
+      <category term="Array.splice()" scheme="https://xtobu.github.io/tags/Array-splice/"/>
     
   </entry>
   
@@ -552,13 +580,13 @@
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
+      <category term="Array.map()" scheme="https://xtobu.github.io/tags/Array-map/"/>
+    
       <category term="String.split()" scheme="https://xtobu.github.io/tags/String-split/"/>
     
       <category term="Array.reverse()" scheme="https://xtobu.github.io/tags/Array-reverse/"/>
     
       <category term="Array.join()" scheme="https://xtobu.github.io/tags/Array-join/"/>
-    
-      <category term="Array.map()" scheme="https://xtobu.github.io/tags/Array-map/"/>
     
       <category term="String.slice()" scheme="https://xtobu.github.io/tags/String-slice/"/>
     
@@ -590,13 +618,13 @@
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
+      <category term="Array.map()" scheme="https://xtobu.github.io/tags/Array-map/"/>
+    
       <category term="String.split()" scheme="https://xtobu.github.io/tags/String-split/"/>
     
       <category term="Array.reverse()" scheme="https://xtobu.github.io/tags/Array-reverse/"/>
     
       <category term="Array.join()" scheme="https://xtobu.github.io/tags/Array-join/"/>
-    
-      <category term="Array.map()" scheme="https://xtobu.github.io/tags/Array-map/"/>
     
   </entry>
   
@@ -631,38 +659,6 @@
       <category term="Array.reverse()" scheme="https://xtobu.github.io/tags/Array-reverse/"/>
     
       <category term="Array.join()" scheme="https://xtobu.github.io/tags/Array-join/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ⓁⒸ ‧‧‧ 821. Shortest Distance to a Character</title>
-    <link href="https://xtobu.github.io/2018/07/20/LC-%E2%80%A7%E2%80%A7%E2%80%A7-821-Shortest-Distance-to-a-Character/"/>
-    <id>https://xtobu.github.io/2018/07/20/LC-‧‧‧-821-Shortest-Distance-to-a-Character/</id>
-    <published>2018-07-20T11:34:41.000Z</published>
-    <updated>2019-04-22T05:51:37.439Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="821-Shortest-Distance-to-a-Character-與字元的最短距離"><a href="#821-Shortest-Distance-to-a-Character-與字元的最短距離" class="headerlink" title="821. Shortest Distance to a Character 與字元的最短距離"></a><a href="https://leetcode.com/problems/shortest-distance-to-a-character/description/" target="_blank" rel="noopener">821. Shortest Distance to a Character 與字元的最短距離</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a string <code>S</code> and a character <code>C</code>,<br>return an array of integers representing the shortest distance from the character <code>C</code> in the string.</p><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;loveleetcode&quot;, C = &apos;e&apos;</span><br><span class="line">Output: [3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0]</span><br></pre></td></tr></table></figure><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ol><li><code>S</code> string length is in <code>[1, 10000]</code>.</li><li><code>C</code> is a single character, and guaranteed to be in string <code>S</code>.</li><li>All letters in <code>S</code> and <code>C</code> are lowercase.</li></ol><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個字串 <code>S</code>, 一個字符 <code>C</code>,<br>回傳字符 <code>C</code> 在字串裡代表的最短距離的數字字串.</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol><li>字串 <code>S</code> 的長度在 <code>[1, 10000]</code> 之間.</li><li><code>C</code> 是單一字符, 而且保證會出現在字串 <code>S</code> 裡面.</li><li>所有字串 <code>S</code> 和字符 <code>C</code>都會是小寫字母.</li></ol><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; S</span></span><br><span class="line"><span class="comment"> * @param &#123;character&#125; C</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> shortestToChar = <span class="function"><span class="keyword">function</span>(<span class="params">S, C</span>) </span>&#123;</span><br><span class="line"><span class="comment">// 找出所有目標字 C 的位置</span></span><br><span class="line"><span class="keyword">var</span> arrIndexC = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; S.length; i++) &#123;</span><br><span class="line"><span class="keyword">if</span> (S[i] === C) &#123;</span><br><span class="line">arrIndexC.push(i);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 結果陣列</span></span><br><span class="line"><span class="keyword">var</span> arrReult = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 先從 arrIndexC 的第 0 個位置開始找</span></span><br><span class="line"><span class="keyword">var</span> nowC = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; S.length; i++) &#123;</span><br><span class="line">arrReult.push(</span><br><span class="line"><span class="comment">// 取決對值 在傳入較小的那個</span></span><br><span class="line"><span class="built_in">Math</span>.min(</span><br><span class="line"><span class="built_in">Math</span>.abs(detect(arrIndexC[nowC]) - i),</span><br><span class="line"><span class="built_in">Math</span>.abs(detect(arrIndexC[nowC - <span class="number">1</span>]) - i)</span><br><span class="line">)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 若目前遍歷到的位置, 已經超過暫存的 nowC , 將 nowC + 1</span></span><br><span class="line"><span class="keyword">if</span> (i &gt;= detect(arrIndexC[nowC])) nowC++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> arrReult;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 如果遇到 undefined , 傳入無限大</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">detect</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> c !== <span class="literal">undefined</span> ? c : <span class="literal">Infinity</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(shortestToChar(<span class="string">'loveleetcode'</span>, <span class="string">'e'</span>));</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      與字元的最短距離
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
-    
-      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
-    
-      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
-    
-      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
-    
-      <category term="Math.abs()" scheme="https://xtobu.github.io/tags/Math-abs/"/>
-    
-      <category term="Math.min()" scheme="https://xtobu.github.io/tags/Math-min/"/>
     
   </entry>
   

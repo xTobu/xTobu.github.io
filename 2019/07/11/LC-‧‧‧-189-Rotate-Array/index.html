@@ -75,7 +75,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="LeetCode,Golang,ⓁⒸ - Easy,☄️,">
 
 
 
@@ -91,13 +91,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="jotting">
-<meta property="og:url" content="https://xtobu.github.io/tags/Key/index.html">
+<meta name="description" content="旋轉陣列">
+<meta name="keywords" content="LeetCode,Golang,ⓁⒸ - Easy,☄️">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ⓁⒸ ‧‧‧ 189. Rotate Array">
+<meta property="og:url" content="https://xtobu.github.io/2019/07/11/LC-‧‧‧-189-Rotate-Array/index.html">
 <meta property="og:site_name" content="jotting">
+<meta property="og:description" content="旋轉陣列">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-11T03:26:11.237Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jotting">
+<meta name="twitter:title" content="ⓁⒸ ‧‧‧ 189. Rotate Array">
+<meta name="twitter:description" content="旋轉陣列">
 
 
 
@@ -125,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://xtobu.github.io/tags/Key/">
+  <link rel="canonical" href="https://xtobu.github.io/2019/07/11/LC-‧‧‧-189-Rotate-Array/">
 
 
 
 
 
-  <title> Tag: Key | jotting </title>
+  <title> ⓁⒸ ‧‧‧ 189. Rotate Array | jotting </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -156,7 +161,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -282,44 +287,211 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2>
-        Key
-        <small>Tag</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://xtobu.github.io/2019/07/11/LC-‧‧‧-189-Rotate-Array/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="xTobu">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/assets/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="jotting">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="jotting" src>
+    </span>
+  </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                ⓁⒸ ‧‧‧ 189. Rotate Array
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-11T09:20:50+08:00">
+                2019-07-11
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-07-11T11:26:11+08:00">
+                2019-07-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  旋轉陣列
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="189-Rotate-Array"><a href="#189-Rotate-Array" class="headerlink" title="189. Rotate Array"></a><a href="https://leetcode.com/problems/rotate-array/" target="_blank" rel="noopener">189. Rotate Array</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given an array, rotate the array to the right by k steps, where k is non-negative.</p>
+<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4,5,6,7] and k = 3</span><br><span class="line">Output: [5,6,7,1,2,3,4]</span><br><span class="line">Explanation:</span><br><span class="line">rotate 1 steps to the right: [7,1,2,3,4,5,6]</span><br><span class="line">rotate 2 steps to the right: [6,7,1,2,3,4,5]</span><br><span class="line">rotate 3 steps to the right: [5,6,7,1,2,3,4]</span><br></pre></td></tr></table></figure>
+<h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [-1,-100,3,99] and k = 2</span><br><span class="line">Output: [3,99,-1,-100]</span><br><span class="line">Explanation: </span><br><span class="line">rotate 1 steps to the right: [99,-1,-100,3]</span><br><span class="line">rotate 2 steps to the right: [3,99,-1,-100]</span><br></pre></td></tr></table></figure>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul>
+<li>Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.</li>
+<li>Could you do it in-place with O(1) extra space?</li>
+</ul>
+<hr>
+<h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個陣列，<br>將陣列往右旋轉 k 個階段，<br>其中 k 為非負數。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>盡你可能地提出解決方式，這裏至少有 3 種不同的方式能解決這問題。</li>
+<li>你可以在時間複雜度 O(1) 額外空間的情況下做到嗎？</li>
+</ul>
+<hr>
+<h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">rotate</span><span class="params">(nums []<span class="keyword">int</span>, k <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">  <span class="comment">// 取出 nums 的總長</span></span><br><span class="line">  <span class="keyword">var</span> lenNums <span class="keyword">int</span> = <span class="built_in">len</span>(nums)</span><br><span class="line">  <span class="comment">// 將 k 除與 lenNums 並取其 餘數 設為 k (steps)</span></span><br><span class="line">  k %= lenNums</span><br><span class="line">  <span class="keyword">if</span> k == <span class="number">0</span> &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// nums 已 k 為範圍分前後兩部分，並將其相反 append 進 temp</span></span><br><span class="line">  <span class="comment">// 關於後面三個點：</span></span><br><span class="line">  <span class="comment">// func append(slice []Type, elems ...Type) []Type</span></span><br><span class="line">  <span class="comment">// append 第一個可以擺 slice，但往後則是擺和第一個 slice 一樣 Type 的 數個 value </span></span><br><span class="line">  <span class="comment">// 故後面必須加上 ... 將 slice 打散後加入 append 。</span></span><br><span class="line">  <span class="comment">// 參照：</span></span><br><span class="line">  <span class="comment">// https://github.com/zhangyachen/zhangyachen.github.io/issues/137</span></span><br><span class="line">  <span class="comment">// https://coderwall.com/p/tlnhmg/appending-two-slices-in-go-what-s-with-that</span></span><br><span class="line">  tmp := <span class="built_in">append</span>(nums[lenNums-k:], nums[<span class="number">0</span>:lenNums-k]...)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 將 nums 設置回去</span></span><br><span class="line">  <span class="keyword">for</span> index, value := <span class="keyword">range</span> tmp &#123;	</span><br><span class="line">    nums[index] = value</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <h2 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2019/07/10/LC-‧‧‧-1-Two-Sum/" itemprop="url">
-              
-                <span itemprop="name">ⓁⒸ ‧‧‧ 1. Two Sum</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-10T10:00:00+08:00" content="2019-07-10">
-          07-10
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/Golang/" rel="tag"># Golang</a>
+          
+            <a href="/tags/LC-Easy/" rel="tag"># ⓁⒸ - Easy</a>
+          
+            <a href="/tags/☄️/" rel="tag"># ☄️</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/10/LC-‧‧‧-136-Single-Number/" rel="next" title="ⓁⒸ ‧‧‧ 136. Single Number">
+                <i class="fa fa-chevron-left"></i> ⓁⒸ ‧‧‧ 136. Single Number
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -327,6 +499,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -346,8 +522,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/assets/images/avatar.png" alt="xTobu">
           <p class="site-author-name" itemprop="name">xTobu</p>
@@ -441,6 +626,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#189-Rotate-Array"><span class="nav-number">1.</span> <span class="nav-text">189. Rotate Array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-Origin"><span class="nav-number">1.1.</span> <span class="nav-text">❀ Origin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.1.1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">Example 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-2"><span class="nav-number">1.1.3.</span> <span class="nav-text">Example 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note"><span class="nav-number">1.1.4.</span> <span class="nav-text">Note</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-翻譯"><span class="nav-number">1.2.</span> <span class="nav-text">❀ 翻譯</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#問題"><span class="nav-number">1.2.1.</span> <span class="nav-text">問題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.2.2.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-Solution"><span class="nav-number">1.3.</span> <span class="nav-text">❀ Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Golang"><span class="nav-number">1.3.1.</span> <span class="nav-text">Golang</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -546,6 +747,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
