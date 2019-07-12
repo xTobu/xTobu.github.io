@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>ⓁⒸ ‧‧‧ 217. Contains Duplicate</title>
+      <link href="/2019/07/12/LC-%E2%80%A7%E2%80%A7%E2%80%A7-217-Contains-Duplicate/"/>
+      <url>/2019/07/12/LC-%E2%80%A7%E2%80%A7%E2%80%A7-217-Contains-Duplicate/</url>
+      
+        <content type="html"><![CDATA[<h1 id="217-Contains-Duplicate"><a href="#217-Contains-Duplicate" class="headerlink" title="217. Contains Duplicate"></a><a href="https://leetcode.com/problems/contains-duplicate/" target="_blank" rel="noopener">217. Contains Duplicate</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given an array of integers, find if the array contains any duplicates.<br>Your function should return true if any value appears at least twice in the array,<br>and it should return false if every element is distinct.</p><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,1]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4]</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure><h3 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,1,1,3,3,4,3,2,4,2]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個整數陣列，找出陣列是否包含任何重複值。<br>如果在陣列裡有任何數字出現了至少兩次以上，你的 function 應該要回傳 true，<br>而如果每個元素都是有明顯差異的，則回傳 false 。</p><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解法一：建立 map 去作為 hash 表</span></span><br><span class="line"><span class="comment">// 依照其 key 去檢查是否該數曾出現過。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">containsDuplicate</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">  m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>)</span><br><span class="line">  <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">    <span class="keyword">if</span> _, ok := m[v]; ok &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    m[v] = <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法二：先 sort ，再和下一個位置判斷是否重複</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">containsDuplicate2</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">  sort.Ints(nums)</span><br><span class="line">  <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">    <span class="keyword">if</span> nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 兩個解法在 LeetCode 上 Runtime 都差不多，</span></span><br><span class="line"><span class="comment"> * 但因為第一個方法有建立了 map ，</span></span><br><span class="line"><span class="comment"> * 所以在 Memory 的使用上會高出只操作陣列的方法二。</span></span><br><span class="line"><span class="comment"> ** /</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Golang </tag>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> ☄️ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ⓁⒸ ‧‧‧ 189. Rotate Array</title>
       <link href="/2019/07/11/LC-%E2%80%A7%E2%80%A7%E2%80%A7-189-Rotate-Array/"/>
       <url>/2019/07/11/LC-%E2%80%A7%E2%80%A7%E2%80%A7-189-Rotate-Array/</url>
@@ -20,9 +51,9 @@
       
         <tags>
             
-            <tag> LeetCode </tag>
-            
             <tag> Golang </tag>
+            
+            <tag> LeetCode </tag>
             
             <tag> ⓁⒸ - Easy </tag>
             
@@ -53,17 +84,17 @@
             
             <tag> JavaScript </tag>
             
-            <tag> LeetCode </tag>
-            
             <tag> Golang </tag>
             
+            <tag> LeetCode </tag>
+            
             <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> ⭐ </tag>
             
             <tag> Array.reduce() </tag>
             
             <tag> XOR </tag>
-            
-            <tag> ⭐ </tag>
             
         </tags>
       
@@ -90,9 +121,9 @@
             
             <tag> JavaScript </tag>
             
-            <tag> LeetCode </tag>
-            
             <tag> Golang </tag>
+            
+            <tag> LeetCode </tag>
             
             <tag> Sum </tag>
             
@@ -272,9 +303,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Array.reduce() </tag>
-            
             <tag> ⭐ </tag>
+            
+            <tag> Array.reduce() </tag>
             
             <tag> ⓁⒸ - Medium </tag>
             
@@ -531,11 +562,11 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
-            <tag> ⭐ </tag>
-            
             <tag> Binary Tree </tag>
             
             <tag> Math.max() </tag>
+            
+            <tag> ⭐ </tag>
             
         </tags>
       
@@ -564,15 +595,15 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Array.reduce() </tag>
-            
             <tag> ⭐ </tag>
+            
+            <tag> Array.reduce() </tag>
             
             <tag> ⓁⒸ - Medium </tag>
             
-            <tag> Array.sort() </tag>
-            
             <tag> Array.splice() </tag>
+            
+            <tag> Array.sort() </tag>
             
         </tags>
       
@@ -605,13 +636,13 @@
             
             <tag> ☄️ </tag>
             
-            <tag> Array.map() </tag>
-            
             <tag> String.split() </tag>
             
             <tag> Array.reverse() </tag>
             
             <tag> Array.join() </tag>
+            
+            <tag> Array.map() </tag>
             
             <tag> String.slice() </tag>
             
@@ -646,13 +677,13 @@
             
             <tag> ☄️ </tag>
             
-            <tag> Array.map() </tag>
-            
             <tag> String.split() </tag>
             
             <tag> Array.reverse() </tag>
             
             <tag> Array.join() </tag>
+            
+            <tag> Array.map() </tag>
             
         </tags>
       
@@ -827,9 +858,9 @@
             
             <tag> ☄️ </tag>
             
-            <tag> ⓁⒸ - Medium </tag>
-            
             <tag> Math.max() </tag>
+            
+            <tag> ⓁⒸ - Medium </tag>
             
             <tag> String.lastIndexOf() </tag>
             
@@ -967,9 +998,9 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
-            <tag> ⭐ </tag>
-            
             <tag> Binary Tree </tag>
+            
+            <tag> ⭐ </tag>
             
         </tags>
       
@@ -998,11 +1029,11 @@
             
             <tag> LeetCode </tag>
             
+            <tag> Binary Tree </tag>
+            
             <tag> ⭐ </tag>
             
             <tag> ⓁⒸ - Medium </tag>
-            
-            <tag> Binary Tree </tag>
             
         </tags>
       
@@ -1033,9 +1064,9 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
-            <tag> XOR </tag>
-            
             <tag> ⭐ </tag>
+            
+            <tag> XOR </tag>
             
             <tag> While </tag>
             
@@ -1066,17 +1097,17 @@
             
             <tag> LeetCode </tag>
             
+            <tag> Binary Tree </tag>
+            
+            <tag> Math.max() </tag>
+            
             <tag> ⭐ </tag>
             
             <tag> Recursive </tag>
             
             <tag> ⓁⒸ - Medium </tag>
             
-            <tag> Binary Tree </tag>
-            
             <tag> Array.slice() </tag>
-            
-            <tag> Math.max() </tag>
             
             <tag> Array.index() </tag>
             
@@ -1144,9 +1175,9 @@
             
             <tag> ☄️ </tag>
             
-            <tag> Array.map() </tag>
-            
             <tag> Array.reverse() </tag>
+            
+            <tag> Array.map() </tag>
             
         </tags>
       
@@ -1366,9 +1397,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Back-end </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> Node.js </tag>
             
