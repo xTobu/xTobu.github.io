@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xtobu.github.io/"/>
-  <updated>2019-07-12T02:46:39.976Z</updated>
+  <updated>2019-07-12T05:39:15.554Z</updated>
   <id>https://xtobu.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ⓁⒸ ‧‧‧ 242. Valid Anagram</title>
+    <link href="https://xtobu.github.io/2019/07/12/LC-%E2%80%A7%E2%80%A7%E2%80%A7-242-Valid-Anagram/"/>
+    <id>https://xtobu.github.io/2019/07/12/LC-‧‧‧-242-Valid-Anagram/</id>
+    <published>2019-07-12T03:54:14.000Z</published>
+    <updated>2019-07-12T05:39:15.554Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="242-Valid-Anagram"><a href="#242-Valid-Anagram" class="headerlink" title="242. Valid Anagram"></a><a href="https://leetcode.com/problems/valid-anagram/" target="_blank" rel="noopener">242. Valid Anagram</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given two strings <code>s</code> and <code>t</code> , write a function to determine if <code>t</code> is an anagram of <code>s</code>.</p><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;anagram&quot;, t = &quot;nagaram&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;rat&quot;, t = &quot;car&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>You may assume the string contains only lowercase alphabets.</p><h3 id="Follow-up"><a href="#Follow-up" class="headerlink" title="Follow up"></a>Follow up</h3><p>What if the inputs contain unicode characters? How would you adapt your solution to such case?</p><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定兩個字串 <code>s</code> 和 <code>t</code> ，<br>寫出一個 function 去判斷 <code>t</code> 是否為 <code>s</code> 的異位字謎。</p><h3 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h3><p>你可以假設字串裡包含的字母只會是小寫。</p><h3 id="進一步思考"><a href="#進一步思考" class="headerlink" title="進一步思考"></a>進一步思考</h3><p>如果 inputs 包含了 unicode characters，<br>你會如何使你的解法適應這種狀況？</p><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* *</span></span><br><span class="line"><span class="comment"> * 解題方向：</span></span><br><span class="line"><span class="comment"> * 計算出 s 每個英文字母出現過幾次，</span></span><br><span class="line"><span class="comment"> * 在依照 t 的出現次數去相減，</span></span><br><span class="line"><span class="comment"> * 最後去判斷全字母是否都為 0 即可。</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isAnagram</span><span class="params">(s <span class="keyword">string</span>, t <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">  <span class="comment">// 為英文字母總數暫存而建立一個 26 長度的整數陣列，</span></span><br><span class="line">  <span class="keyword">var</span> alphabets [<span class="number">26</span>]<span class="keyword">int</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 將字串 s 轉成 byte 型態後遍歷，</span></span><br><span class="line">  <span class="comment">// 將其代表的英文字母數量加一。</span></span><br><span class="line">  <span class="keyword">for</span> _, v := <span class="keyword">range</span> []<span class="keyword">byte</span>(s) &#123;</span><br><span class="line">    alphabets[v<span class="number">-97</span>]++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 將字串 t 轉成 byte 型態後遍歷，</span></span><br><span class="line">  <span class="comment">// 將其代表的英文字母數量減一。</span></span><br><span class="line">  <span class="keyword">for</span> _, v := <span class="keyword">range</span> []<span class="keyword">byte</span>(t) &#123;</span><br><span class="line">    alphabets[v<span class="number">-97</span>]--</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 遍歷作為英文字母總數暫存的陣列，</span></span><br><span class="line">  <span class="comment">// 若其值不等於 0 , 則代表有某字母出現次數無法對應，</span></span><br><span class="line">  <span class="comment">// 於是便可證明 s 、 t 不為易位構詞遊戲。</span></span><br><span class="line">  <span class="keyword">for</span> _, v := <span class="keyword">range</span> alphabets &#123;</span><br><span class="line">    <span class="keyword">if</span> v != <span class="number">0</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      有效的字謎（易位構詞遊戲）
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
+    
+      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>ⓁⒸ ‧‧‧ 217. Contains Duplicate</title>
@@ -130,13 +158,13 @@
     
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
+      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
       <category term="Sum" scheme="https://xtobu.github.io/tags/Sum/"/>
     
       <category term="Object" scheme="https://xtobu.github.io/tags/Object/"/>
     
       <category term="Key" scheme="https://xtobu.github.io/tags/Key/"/>
-    
-      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
@@ -304,9 +332,9 @@
     
       <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
     
-      <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
-    
       <category term="ⓁⒸ - Medium" scheme="https://xtobu.github.io/tags/LC-Medium/"/>
+    
+      <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
     
       <category term="Array.sort()" scheme="https://xtobu.github.io/tags/Array-sort/"/>
     
@@ -370,9 +398,9 @@
     
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
-      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
-    
       <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
+    
+      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
       <category term="Recursive" scheme="https://xtobu.github.io/tags/Recursive/"/>
     
@@ -408,9 +436,9 @@
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
-      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
-    
       <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
+    
+      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
       <category term="Array.indexOf()" scheme="https://xtobu.github.io/tags/Array-indexOf/"/>
     
@@ -470,11 +498,11 @@
     
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
+      <category term="Binary Tree" scheme="https://xtobu.github.io/tags/Binary-Tree/"/>
+    
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
-    
-      <category term="Binary Tree" scheme="https://xtobu.github.io/tags/Binary-Tree/"/>
     
   </entry>
   
@@ -538,11 +566,11 @@
     
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
-      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
-    
       <category term="Binary Tree" scheme="https://xtobu.github.io/tags/Binary-Tree/"/>
     
       <category term="Math.max()" scheme="https://xtobu.github.io/tags/Math-max/"/>
+    
+      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
       <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
     
@@ -572,13 +600,13 @@
     
       <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
     
-      <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
-    
       <category term="ⓁⒸ - Medium" scheme="https://xtobu.github.io/tags/LC-Medium/"/>
     
-      <category term="Array.splice()" scheme="https://xtobu.github.io/tags/Array-splice/"/>
+      <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
     
       <category term="Array.sort()" scheme="https://xtobu.github.io/tags/Array-sort/"/>
+    
+      <category term="Array.splice()" scheme="https://xtobu.github.io/tags/Array-splice/"/>
     
   </entry>
   
@@ -617,42 +645,6 @@
       <category term="Array.map()" scheme="https://xtobu.github.io/tags/Array-map/"/>
     
       <category term="String.slice()" scheme="https://xtobu.github.io/tags/String-slice/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ⓁⒸ ‧‧‧ 557. Reverse Words in a String III</title>
-    <link href="https://xtobu.github.io/2018/07/20/LC-%E2%80%A7%E2%80%A7%E2%80%A7-557-Reverse-Words-in-a-String-III/"/>
-    <id>https://xtobu.github.io/2018/07/20/LC-‧‧‧-557-Reverse-Words-in-a-String-III/</id>
-    <published>2018-07-20T11:45:10.000Z</published>
-    <updated>2019-04-22T05:51:37.437Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="557-Reverse-Words-in-a-String-III-反轉字串裡的單字"><a href="#557-Reverse-Words-in-a-String-III-反轉字串裡的單字" class="headerlink" title="557. Reverse Words in a String III 反轉字串裡的單字"></a><a href="https://leetcode.com/problems/reverse-words-in-a-string-iii/description/" target="_blank" rel="noopener">557. Reverse Words in a String III 反轉字串裡的單字</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a string,<br>you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.</p><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul><li>In the string, each word is separated by single space and there will not be any extra space in the string.</li></ul><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;Let&apos;s take LeetCode contest&quot;</span><br><span class="line">Output: &quot;s&apos;teL ekat edoCteeL tsetnoc&quot;</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個字串,<br>你必須倒轉每個單字裡的字母的順序, 同時保留空格和原始句子的順單字順序.</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul><li>在字串裡, 每個單字都會用一個空白來隔開, 而且單字裡不會存在額外的空白.</li></ul><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; s</span></span><br><span class="line"><span class="comment"> * @return &#123;string&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 依題意,</span></span><br><span class="line"><span class="comment">// 先將字串 s 拆分成陣列,</span></span><br><span class="line"><span class="comment">// 再用 .map() 對每個 word 做倒轉處理,</span></span><br><span class="line"><span class="comment">// 之後再 join 成字串.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reverseWords = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> s</span><br><span class="line">.split(<span class="string">' '</span>)</span><br><span class="line">.map(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> reverseString(item);</span><br><span class="line">&#125;)</span><br><span class="line">.join(<span class="string">' '</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//參考： https://github.com/xTobu/LeetCode/tree/master/JavaScript/%23344</span></span><br><span class="line"><span class="keyword">var</span> reverseString = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> s.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(reverseWords(<span class="string">"Let's take LeetCode contest"</span>));</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      反轉字串裡的單字
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
-    
-      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
-    
-      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
-    
-      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
-    
-      <category term="String.split()" scheme="https://xtobu.github.io/tags/String-split/"/>
-    
-      <category term="Array.reverse()" scheme="https://xtobu.github.io/tags/Array-reverse/"/>
-    
-      <category term="Array.join()" scheme="https://xtobu.github.io/tags/Array-join/"/>
-    
-      <category term="Array.map()" scheme="https://xtobu.github.io/tags/Array-map/"/>
     
   </entry>
   
