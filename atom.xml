@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xtobu.github.io/"/>
-  <updated>2019-07-12T08:19:39.116Z</updated>
+  <updated>2019-07-12T10:27:27.698Z</updated>
   <id>https://xtobu.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ⓁⒸ ‧‧‧ 350. Intersection of Two Arrays II</title>
+    <link href="https://xtobu.github.io/2019/07/12/LC-%E2%80%A7%E2%80%A7%E2%80%A7-350-Intersection-of-Two-Arrays-II/"/>
+    <id>https://xtobu.github.io/2019/07/12/LC-‧‧‧-350-Intersection-of-Two-Arrays-II/</id>
+    <published>2019-07-12T08:22:47.000Z</published>
+    <updated>2019-07-12T10:27:27.698Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="350-Intersection-of-Two-Arrays-II"><a href="#350-Intersection-of-Two-Arrays-II" class="headerlink" title="350. Intersection of Two Arrays II"></a><a href="https://leetcode.com/problems/intersection-of-two-arrays-ii/" target="_blank" rel="noopener">350. Intersection of Two Arrays II</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given two arrays, write a function to compute their intersection.</p><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums1 = [1,2,2,1], nums2 = [2,2]</span><br><span class="line">Output: [2,2]</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]</span><br><span class="line">Output: [4,9]</span><br></pre></td></tr></table></figure><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul><li>Each element in the result should appear as many times as it shows in both arrays.</li><li>The result can be in any order.</li></ul><h3 id="Follow-up"><a href="#Follow-up" class="headerlink" title="Follow up"></a>Follow up</h3><ul><li>What if the given array is already sorted? How would you optimize your algorithm?</li><li>What if nums1’s size is small compared to nums2’s size? Which algorithm is better?</li><li>What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?</li></ul><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定兩個陣列，<br>寫出一個 function 去計算出他們的交叉點。</p><h3 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h3><ul><li>回傳結果的每一個元素都應該出現在兩個陣列中數次以上。</li><li>回傳結果可以允許任意的排序方式。</li></ul><h3 id="進一步思考"><a href="#進一步思考" class="headerlink" title="進一步思考"></a>進一步思考</h3><ul><li>如果給定的陣列已經排序過了怎麼辦？ 你會如何因此去優化演算法？</li><li>如果 nums1 的尺寸與 nums2 的尺寸相比較小怎麼辦？ 哪種算法更好？</li><li>如果 nums2 的元素都儲存在磁碟上，<br>導致你無法一次將所有元素加載在內存記憶體的時候，該怎麼辦？</li></ul><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 建立一個 hash 表</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">intersect</span><span class="params">(nums1 []<span class="keyword">int</span>, nums2 []<span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始化一個 map ，做 hash 使用</span></span><br><span class="line">  m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 對 nums1 跑迴圈，</span></span><br><span class="line">  <span class="comment">// 以各個元素作為 key 值，去找 m 裡面是否有存在過，</span></span><br><span class="line">  <span class="comment">// 有的話加一，沒有則建立 </span></span><br><span class="line">  <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums1 &#123;</span><br><span class="line">    <span class="keyword">if</span> _, ok := m[v]; ok &#123;</span><br><span class="line">      m[v]++</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      m[v] = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 對 nums2 跑迴圈，</span></span><br><span class="line">  <span class="comment">// 以各個元素作為 key 值，去找 m 裡面是否有存在，</span></span><br><span class="line">  <span class="comment">// 若存在，則將其值存進 ret 裡，</span></span><br><span class="line">  <span class="comment">// 並對 m 裡對應到的位置剪一</span></span><br><span class="line">  <span class="comment">// </span></span><br><span class="line">  <span class="comment">// 條件判斷裡需增加 val &gt; 0，因為 0 也會等於 ok ，</span></span><br><span class="line">  <span class="comment">// 不判斷的話， ret 會重複寫入。</span></span><br><span class="line">  <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums2 &#123;</span><br><span class="line">    <span class="keyword">if</span> val, ok := m[v]; val &gt; <span class="number">0</span> &amp;&amp; ok &#123;</span><br><span class="line">      ret = <span class="built_in">append</span>(ret, v)</span><br><span class="line">      m[v]--</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> ret</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="Golang-1"><a href="#Golang-1" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 先排序，之後一邊移位一邊比較，</span></span><br><span class="line"><span class="comment"> * 沒有建立 map ，因此記憶體的使用比較少。</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">intersect</span><span class="params">(nums1 []<span class="keyword">int</span>, nums2 []<span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 排序陣列</span></span><br><span class="line">  sort.Ints(nums1)</span><br><span class="line">  sort.Ints(nums2)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> i, j <span class="keyword">int</span></span><br><span class="line">  res := []<span class="keyword">int</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// for 迴圈的標準條件為：nums1 或 nums2 其一結束即可</span></span><br><span class="line">  <span class="keyword">for</span> i &lt; <span class="built_in">len</span>(nums1) &amp;&amp; j &lt; <span class="built_in">len</span>(nums2) &#123;</span><br><span class="line"></span><br><span class="line">    num1 := nums1[i]</span><br><span class="line">    num2 := nums2[j]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 若數到 nums1 的某一數 num1 ，</span></span><br><span class="line">    <span class="comment">// 其值大於當前的 num2 時，</span></span><br><span class="line">    <span class="comment">// nums2 的陣列要往下一個前進。（ j 加一）</span></span><br><span class="line">    <span class="keyword">if</span> num1 &gt; num2 &#123;</span><br><span class="line">      j++</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 若數到 nums2 的某一數 num2 ，</span></span><br><span class="line">    <span class="comment">// 其值大於當前的 num1 時，</span></span><br><span class="line">    <span class="comment">// nums1 的陣列要往下一個前進。（ i 加一）</span></span><br><span class="line">    <span class="keyword">if</span> num1 &lt; num2 &#123;</span><br><span class="line">      i++</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 若 num1 、 num2 相等時，</span></span><br><span class="line">    <span class="comment">// 將當前數字 append 進 res ，</span></span><br><span class="line">    <span class="comment">// 並對 nums1 、 nums2 的陣列都往下個計算（ i 、 j 都加一）</span></span><br><span class="line">    <span class="keyword">if</span> num1 == num2 &#123;</span><br><span class="line">      res = <span class="built_in">append</span>(res, num1)</span><br><span class="line">      i++</span><br><span class="line">      j++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      兩個陣列的交叉點
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
+    
+      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>ⓁⒸ ‧‧‧ 344. Reverse String</title>
@@ -98,9 +126,9 @@
       <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
-    
       <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
@@ -126,9 +154,9 @@
       <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
-    
       <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
@@ -154,9 +182,9 @@
       <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
     
     
-      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
-    
       <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
@@ -184,17 +212,17 @@
     
       <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
     
-      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
-    
       <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
     
+      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
+    
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
     
       <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
     
       <category term="XOR" scheme="https://xtobu.github.io/tags/XOR/"/>
-    
-      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
     
   </entry>
   
@@ -218,17 +246,17 @@
     
       <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
     
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
+    
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
-      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
+      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
       <category term="Sum" scheme="https://xtobu.github.io/tags/Sum/"/>
     
       <category term="Object" scheme="https://xtobu.github.io/tags/Object/"/>
     
       <category term="Key" scheme="https://xtobu.github.io/tags/Key/"/>
-    
-      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
@@ -394,11 +422,11 @@
     
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
-      <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
-    
       <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
     
       <category term="ⓁⒸ - Medium" scheme="https://xtobu.github.io/tags/LC-Medium/"/>
+    
+      <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
     
       <category term="Array.sort()" scheme="https://xtobu.github.io/tags/Array-sort/"/>
     
@@ -462,9 +490,9 @@
     
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
-      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
-    
       <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
+    
+      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
       <category term="Recursive" scheme="https://xtobu.github.io/tags/Recursive/"/>
     
@@ -500,9 +528,9 @@
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
-      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
-    
       <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
+    
+      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
       <category term="Array.indexOf()" scheme="https://xtobu.github.io/tags/Array-indexOf/"/>
     
@@ -532,11 +560,11 @@
     
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
+      <category term="Binary Tree" scheme="https://xtobu.github.io/tags/Binary-Tree/"/>
+    
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
-    
-      <category term="Binary Tree" scheme="https://xtobu.github.io/tags/Binary-Tree/"/>
     
   </entry>
   
@@ -600,47 +628,13 @@
     
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
-      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
-    
-      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
-    
       <category term="Binary Tree" scheme="https://xtobu.github.io/tags/Binary-Tree/"/>
     
       <category term="Math.max()" scheme="https://xtobu.github.io/tags/Math-max/"/>
     
-  </entry>
-  
-  <entry>
-    <title>ⓁⒸ ‧‧‧ 406. Queue Reconstruction by Height</title>
-    <link href="https://xtobu.github.io/2018/07/20/LC-%E2%80%A7%E2%80%A7%E2%80%A7-406-Queue-Reconstruction-by-Height/"/>
-    <id>https://xtobu.github.io/2018/07/20/LC-‧‧‧-406-Queue-Reconstruction-by-Height/</id>
-    <published>2018-07-20T11:54:43.000Z</published>
-    <updated>2019-04-22T05:51:37.437Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="406-Queue-Reconstruction-by-Height-依高度重建隊列"><a href="#406-Queue-Reconstruction-by-Height-依高度重建隊列" class="headerlink" title="406. Queue Reconstruction by Height 依高度重建隊列"></a><a href="https://leetcode.com/problems/queue-reconstruction-by-height/description/" target="_blank" rel="noopener">406. Queue Reconstruction by Height 依高度重建隊列</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Suppose you have a random list of people standing in a queue.<br>Each person is described by a pair of integers <code>(h, k)</code>,<br>where <code>h</code> is the height of the person and <code>k</code> is the number of people in front of this person who have a height greater than or equal to <code>h</code>. Write an algorithm to reconstruct the queue.</p><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul><li>The number of people is less than <code>1,100</code>.</li></ul><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">[[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>假設有一個隨機的人們排隊的列表.<br>每個人都用一對整數 <code>(h, k)</code> 來描述,<br><code>h</code> 代表著那人的身高, 而 <code>k</code> 則是身高高於或等於 <code>h</code> 的人在他前面的數量.<br>寫出一個算法來重建這個隊列.</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul><li>人數小於 <code>1,100</code></li></ul><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[][]&#125; people</span></span><br><span class="line"><span class="comment"> * @return &#123;number[][]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 想出這解法的大神真的很膜拜,</span></span><br><span class="line"><span class="comment"> * 一直再想該怎麼去判斷每個數的之前與之後,</span></span><br><span class="line"><span class="comment"> * 但如果確定題目給的陣列, 一定能排出正確排序,</span></span><br><span class="line"><span class="comment"> * 那解法會清澈很多.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 大神的解法是先整理出依 h 的降幕排序,</span></span><br><span class="line"><span class="comment"> * 若 h 相等, 則比較 k 的大小, 小的排前面</span></span><br><span class="line"><span class="comment"> * 因此可整理出,</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *  [[7, 0], [4, 4], [7, 1], [5, 0], [6, 1], [5, 2]]</span></span><br><span class="line"><span class="comment"> * ==================================================</span></span><br><span class="line"><span class="comment"> *  [[7, 0], [7, 1], [6, 1], [5, 0], [5, 2], [4, 4]]</span></span><br><span class="line"><span class="comment"> * 的陣列.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 之後遍歷每個資料,</span></span><br><span class="line"><span class="comment"> * 搭配 array.splice(start, deleteCount, item, item,...)</span></span><br><span class="line"><span class="comment"> * // 開始位置, 刪除數量, 加入的item</span></span><br><span class="line"><span class="comment"> * // months = ['Jan', 'March', 'April', 'June'];</span></span><br><span class="line"><span class="comment"> * // months.splice(1, 1, 'Feb');</span></span><br><span class="line"><span class="comment"> * // ["Jan", "Feb", "April", "June"]</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 重點,</span></span><br><span class="line"><span class="comment"> * 因為陣列已經整理好身高由大到小, 且 k 值保證正確</span></span><br><span class="line"><span class="comment"> * 意思是說, 遍歷的每個值, 只要去判斷 k 知道前面有 k 個更高或一樣高的人,</span></span><br><span class="line"><span class="comment"> * 那在新建的那個陣列, 只要將當前值直接填入到位置 k 就好,</span></span><br><span class="line"><span class="comment"> * 因為是從大開始遍歷到小,</span></span><br><span class="line"><span class="comment"> * 也不用去想該值之外的人會如何,</span></span><br><span class="line"><span class="comment"> * 依題目 k 絕對合理, 那照著 k 給的位置排下去, 就一定正確.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 超強的 完全沒想過  豁然開朗.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * EXP:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * [ [ 7, 0 ], [ 7, 1 ], [ 6, 1 ], [ 5, 0 ], [ 5, 2 ], [ 4, 4 ] ].reduce() 結果如下</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * start:  0   item:  [ 7, 0 ]   result:  []</span></span><br><span class="line"><span class="comment"> * start:  1   item:  [ 7, 1 ]   result:  [ [ 7, 0 ] ]</span></span><br><span class="line"><span class="comment"> * start:  1   item:  [ 6, 1 ]   result:  [ [ 7, 0 ], [ 7, 1 ] ]</span></span><br><span class="line"><span class="comment"> * start:  0   item:  [ 5, 0 ]   result:  [ [ 7, 0 ], [ 6, 1 ], [ 7, 1 ] ]</span></span><br><span class="line"><span class="comment"> * start:  2   item:  [ 5, 2 ]   result:  [ [ 5, 0 ], [ 7, 0 ], [ 6, 1 ], [ 7, 1 ] ]</span></span><br><span class="line"><span class="comment"> * start:  4   item:  [ 4, 4 ]   result:  [ [ 5, 0 ], [ 7, 0 ], [ 5, 2 ], [ 6, 1 ], [ 7, 1 ] ]</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> reconstructQueue = <span class="function"><span class="keyword">function</span>(<span class="params">people</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> result = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 整理出依 h 的降幕排序, 若相等(b[0] - a[0] = 0), 則比對 k 的值小的前面, 作升幕,</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// people.sort(function(a, b) &#123;</span></span><br><span class="line"><span class="comment">// return b[0] - a[0] || a[1] - b[1];</span></span><br><span class="line"><span class="comment">// &#125;);</span></span><br><span class="line">people.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> b[<span class="number">0</span>] - a[<span class="number">0</span>] || a[<span class="number">1</span>] - b[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> people.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">accumulator, currentValue, currentIndex</span>) </span>&#123;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 對 accumulator 擺入 currentValue</span></span><br><span class="line"><span class="comment"> * 位置則是其 k 值</span></span><br><span class="line"><span class="comment"> * 解釋如上</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">accumulator.splice(currentValue[<span class="number">1</span>], <span class="number">0</span>, currentValue);</span><br><span class="line"><span class="comment">// console.log(</span></span><br><span class="line"><span class="comment">// 'start: ',</span></span><br><span class="line"><span class="comment">// currentValue[1],</span></span><br><span class="line"><span class="comment">// '  item: ',</span></span><br><span class="line"><span class="comment">// currentValue,</span></span><br><span class="line"><span class="comment">// '  result: ',</span></span><br><span class="line"><span class="comment">// accumulator</span></span><br><span class="line"><span class="comment">// );</span></span><br><span class="line"><span class="keyword">return</span> accumulator;</span><br><span class="line">&#125;, []);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = [[<span class="number">7</span>, <span class="number">0</span>], [<span class="number">4</span>, <span class="number">4</span>], [<span class="number">7</span>, <span class="number">1</span>], [<span class="number">5</span>, <span class="number">0</span>], [<span class="number">6</span>, <span class="number">1</span>], [<span class="number">5</span>, <span class="number">2</span>]];</span><br><span class="line"><span class="built_in">console</span>.log(reconstructQueue(data));</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      依高度重建隊列
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
-    
-      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
-    
-      <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
+      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
       <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
-    
-      <category term="ⓁⒸ - Medium" scheme="https://xtobu.github.io/tags/LC-Medium/"/>
-    
-      <category term="Array.splice()" scheme="https://xtobu.github.io/tags/Array-splice/"/>
-    
-      <category term="Array.sort()" scheme="https://xtobu.github.io/tags/Array-sort/"/>
     
   </entry>
   
