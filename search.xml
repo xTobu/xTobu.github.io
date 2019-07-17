@@ -4,6 +4,74 @@
   
     
     <entry>
+      <title>ⓁⒸ ‧‧‧ 709. To Lower Case</title>
+      <link href="/2019/07/17/LC-%E2%80%A7%E2%80%A7%E2%80%A7-709-To-Lower-Case/"/>
+      <url>/2019/07/17/LC-%E2%80%A7%E2%80%A7%E2%80%A7-709-To-Lower-Case/</url>
+      
+        <content type="html"><![CDATA[<h1 id="709-To-Lower-Case"><a href="#709-To-Lower-Case" class="headerlink" title="709. To Lower Case"></a><a href="https://leetcode.com/problems/to-lower-case/" target="_blank" rel="noopener">709. To Lower Case</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.</p><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;Hello&quot;</span><br><span class="line">Output: &quot;hello&quot;</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;here&quot;</span><br><span class="line">Output: &quot;here&quot;</span><br></pre></td></tr></table></figure><h3 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;LOVELY&quot;</span><br><span class="line">Output: &quot;lovely&quot;</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>實現具有 字串參數 str 的函數 ToLowerCase() ，並以小寫形式返回相同的字符串。</p><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">toLowerCase</span><span class="params">(str <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    <span class="comment">// 使用原生套件 strings 的 ToLower 轉換成小寫</span></span><br><span class="line">    <span class="keyword">return</span> strings.ToLower(str)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Golang </tag>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> ☄️ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ⓁⒸ ‧‧‧ 657. Judge Route Circle</title>
+      <link href="/2019/07/17/LC-%E2%80%A7%E2%80%A7%E2%80%A7-657-Judge-Route-Circle/"/>
+      <url>/2019/07/17/LC-%E2%80%A7%E2%80%A7%E2%80%A7-657-Judge-Route-Circle/</url>
+      
+        <content type="html"><![CDATA[<h1 id="657-Judge-Route-Circle"><a href="#657-Judge-Route-Circle" class="headerlink" title="657. Judge Route Circle"></a><a href="https://leetcode.com/problems/robot-return-to-origin/" target="_blank" rel="noopener">657. Judge Route Circle</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Initially, there is a Robot at position (0, 0).<br>Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place.</p><p>The move sequence is represented by a string. And each move is represent by a character.<br>The valid robot moves are R (Right), L (Left), U (Up) and D (down).<br>The output should be true or false representing whether the robot makes a circle.</p><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;UD&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;LL&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>最初, 有個機器人在位置 (0, 0).<br>給他了一連串的動作之後, 判斷這機器人會不會繞一圈, 也就是回到原點.</p><p>動作的序列將會是字串, 每個字元代表一個動作.<br>有效的動作為 R (往右), L (往左), U (往上)和 D (往下).<br>輸出結果必須是 ture 或是 false, 代表這機器人有沒有繞一圈.</p><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; moves</span></span><br><span class="line"><span class="comment"> * @return &#123;boolean&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> judgeCircle = <span class="function"><span class="keyword">function</span>(<span class="params">moves</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 將 moves 用 split 成陣列</span></span><br><span class="line">  <span class="keyword">var</span> arr = moves.split(<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果該陣列為基數, 則一定不可能回原點, 直接回傳 false</span></span><br><span class="line">  <span class="keyword">if</span> (arr.length % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 假設起點為 (0, 0)</span></span><br><span class="line">  <span class="comment">// 定義出x,y為移動路徑</span></span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> y = <span class="number">0</span>;</span><br><span class="line">  arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (element) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"U"</span>:</span><br><span class="line">        y++;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"D"</span>:</span><br><span class="line">        y--;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"R"</span>:</span><br><span class="line">        x++;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"L"</span>:</span><br><span class="line">        x--;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">//若座標為 (0, 0), 則回傳 true</span></span><br><span class="line">  <span class="keyword">if</span> (x == <span class="number">0</span> &amp;&amp; y == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//不在原點, 回傳 false</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 假設起點為 (0, 0)</span></span><br><span class="line"><span class="comment"> * 定義出 x, y 來計算移動路徑</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">judgeCircle</span><span class="params">(moves <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 若總步數為奇數，</span></span><br><span class="line"><span class="comment">// 則不可能回到起點，</span></span><br><span class="line"><span class="comment">// 故回傳 false 。</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(moves)%<span class="number">2</span> == <span class="number">1</span> &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x, y <span class="keyword">int</span></span><br><span class="line"><span class="keyword">for</span> _, v := <span class="keyword">range</span> moves &#123;</span><br><span class="line"><span class="keyword">switch</span> v &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="string">'U'</span>:</span><br><span class="line">y++</span><br><span class="line"><span class="keyword">case</span> <span class="string">'D'</span>:</span><br><span class="line">y--</span><br><span class="line"><span class="keyword">case</span> <span class="string">'R'</span>:</span><br><span class="line">x++</span><br><span class="line"><span class="keyword">case</span> <span class="string">'L'</span>:</span><br><span class="line">x--</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 檢查最後的座標是否為 (0, 0)</span></span><br><span class="line"><span class="keyword">return</span> x == <span class="number">0</span> &amp;&amp; y == <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> Golang </tag>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> ☄️ </tag>
+            
+            <tag> String.split() </tag>
+            
+            <tag> Array.forEach() </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ⓁⒸ ‧‧‧ 520. Detect Capita</title>
       <link href="/2019/07/17/LC-%E2%80%A7%E2%80%A7%E2%80%A7-520-Detect-Capita/"/>
       <url>/2019/07/17/LC-%E2%80%A7%E2%80%A7%E2%80%A7-520-Detect-Capita/</url>
@@ -319,13 +387,13 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ⓁⒸ - Easy </tag>
-            
             <tag> Sum </tag>
             
             <tag> Object </tag>
             
             <tag> Key </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
             
             <tag> ☄️ </tag>
             
@@ -571,9 +639,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ⭐ </tag>
-            
             <tag> ☄️ </tag>
+            
+            <tag> ⭐ </tag>
             
             <tag> Recursive </tag>
             
@@ -612,9 +680,9 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
-            <tag> ⭐ </tag>
-            
             <tag> ☄️ </tag>
+            
+            <tag> ⭐ </tag>
             
             <tag> Array.indexOf() </tag>
             
@@ -647,11 +715,11 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Binary Tree </tag>
-            
             <tag> ⓁⒸ - Easy </tag>
             
             <tag> ☄️ </tag>
+            
+            <tag> Binary Tree </tag>
             
         </tags>
       
@@ -721,11 +789,11 @@
             
             <tag> LeetCode </tag>
             
+            <tag> ⓁⒸ - Easy </tag>
+            
             <tag> Binary Tree </tag>
             
             <tag> Math.max() </tag>
-            
-            <tag> ⓁⒸ - Easy </tag>
             
             <tag> ⭐ </tag>
             
@@ -980,9 +1048,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Math.max() </tag>
-            
             <tag> ☄️ </tag>
+            
+            <tag> Math.max() </tag>
             
             <tag> ⓁⒸ - Medium </tag>
             
@@ -1120,9 +1188,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> Binary Tree </tag>
-            
             <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> Binary Tree </tag>
             
             <tag> ⭐ </tag>
             
@@ -1376,41 +1444,6 @@
             <tag> String.split() </tag>
             
             <tag> Set() </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>ⓁⒸ ‧‧‧ 657. Judge Route Circle</title>
-      <link href="/2018/07/18/LC-%E2%80%A7%E2%80%A7%E2%80%A7-657-Judge-Route-Circle/"/>
-      <url>/2018/07/18/LC-%E2%80%A7%E2%80%A7%E2%80%A7-657-Judge-Route-Circle/</url>
-      
-        <content type="html"><![CDATA[<h1 id="657-Judge-Route-Circle"><a href="#657-Judge-Route-Circle" class="headerlink" title="657. Judge Route Circle"></a><a href="https://leetcode.com/problems/judge-route-circle/description/" target="_blank" rel="noopener">657. Judge Route Circle</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Initially, there is a Robot at position (0, 0).<br>Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place.</p><p>The move sequence is represented by a string. And each move is represent by a character.<br>The valid robot moves are R (Right), L (Left), U (Up) and D (down).<br>The output should be true or false representing whether the robot makes a circle.</p><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;UD&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;LL&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>最初, 有個機器人在位置 (0, 0).<br>給他了一連串的動作之後, 判斷這機器人會不會繞一圈, 也就是回到原點.</p><p>動作的序列將會是字串, 每個字元代表一個動作.<br>有效的動作為 R (往右), L (往左), U (往上)和 D (往下).<br>輸出結果必須是 ture 或是 false, 代表這機器人有沒有繞一圈.</p><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; moves</span></span><br><span class="line"><span class="comment"> * @return &#123;boolean&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> judgeCircle = <span class="function"><span class="keyword">function</span>(<span class="params">moves</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 將 moves 用 split 成陣列</span></span><br><span class="line">  <span class="keyword">var</span> arr = moves.split(<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果該陣列為基數, 則一定不可能回原點, 直接回傳 false</span></span><br><span class="line">  <span class="keyword">if</span> (arr.length % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 假設起點為 (0, 0)</span></span><br><span class="line">  <span class="comment">// 定義出x,y為移動路徑</span></span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> y = <span class="number">0</span>;</span><br><span class="line">  arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (element) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"U"</span>:</span><br><span class="line">        y++;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"D"</span>:</span><br><span class="line">        y--;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"R"</span>:</span><br><span class="line">        x++;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"L"</span>:</span><br><span class="line">        x--;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">//若座標為 (0, 0), 則回傳 true</span></span><br><span class="line">  <span class="keyword">if</span> (x == <span class="number">0</span> &amp;&amp; y == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//不在原點, 回傳 false</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> LeetCode </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> JavaScript </tag>
-            
-            <tag> LeetCode </tag>
-            
-            <tag> ⓁⒸ - Easy </tag>
-            
-            <tag> ☄️ </tag>
-            
-            <tag> String.split() </tag>
-            
-            <tag> Array.forEach() </tag>
             
         </tags>
       
