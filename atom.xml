@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xtobu.github.io/"/>
-  <updated>2019-07-17T09:22:38.795Z</updated>
+  <updated>2019-07-18T09:00:36.076Z</updated>
   <id>https://xtobu.github.io/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ⓁⒸ ‧‧‧ 917. Reverse Only Letters</title>
+    <link href="https://xtobu.github.io/2019/07/18/LC-%E2%80%A7%E2%80%A7%E2%80%A7-917-Reverse-Only-Letters/"/>
+    <id>https://xtobu.github.io/2019/07/18/LC-‧‧‧-917-Reverse-Only-Letters/</id>
+    <published>2019-07-18T08:52:30.000Z</published>
+    <updated>2019-07-18T09:00:36.076Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="917-Reverse-Only-Letters"><a href="#917-Reverse-Only-Letters" class="headerlink" title="917. Reverse Only Letters"></a><a href="https://leetcode.com/problems/reverse-only-letters/" target="_blank" rel="noopener">917. Reverse Only Letters</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a string <code>S</code>,<br>return the “reversed” string where all characters that are not a letter stay in the same place,<br>and all letters reverse their positions.</p><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ol><li><code>S.length &lt;= 100</code></li><li><code>33 &lt;= S[i].ASCIIcode &lt;= 122</code> </li><li><code>S</code> doesn’t contain <code>\</code> or <code>&quot;</code></li></ol><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;ab-cd&quot;</span><br><span class="line">Output: &quot;dc-ba&quot;</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;a-bC-dEf-ghIj&quot;</span><br><span class="line">Output: &quot;j-Ih-gfE-dCba&quot;</span><br></pre></td></tr></table></figure><h3 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;Test1ng-Leet=code-Q!&quot;</span><br><span class="line">Output: &quot;Qedo1ct-eeLg=ntse-T!&quot;</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個字串 <code>S</code>，回傳反轉過的字串，<br>其中所有不是字母的字符留在原位，<br>而所有字母反轉他們的位置。</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol><li><code>S.length &lt;= 100</code></li><li><code>33 &lt;= S[i].ASCIIcode &lt;= 122</code> </li><li><code>S</code> 不會包含 <code>\</code> 或 <code>&quot;</code></li></ol><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 題目為翻轉字串，但只反轉英文字母</span></span><br><span class="line"><span class="comment"> * 反轉字串的方式和 344. Reverse String 一樣，</span></span><br><span class="line"><span class="comment"> * 但因應題目，故建立 isLetter 去判斷欲反轉的左右邊際，</span></span><br><span class="line"><span class="comment"> * 於是都以 left &lt; right 並加上條件 !isLetter 的前提去跑遍歷，</span></span><br><span class="line"><span class="comment"> * 以尋找到都是字母的左右邊際，並將兩者反轉，</span></span><br><span class="line"><span class="comment"> * 全部跑完後，將 []byte 轉型成 string 回傳</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverseOnlyLetters</span><span class="params">(S <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">bs := []<span class="keyword">byte</span>(S)</span><br><span class="line">     left, right := <span class="number">0</span>, <span class="built_in">len</span>(bs)<span class="number">-1</span></span><br><span class="line"><span class="keyword">for</span>; left &lt; right; left, right = left+<span class="number">1</span>, right<span class="number">-1</span> &#123;</span><br><span class="line"><span class="keyword">for</span> left &lt; right &amp;&amp; !isLetter(bs[left]) &#123;</span><br><span class="line">left++</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> left &lt; right &amp;&amp; !isLetter(bs[right]) &#123;</span><br><span class="line">right--</span><br><span class="line">&#125;</span><br><span class="line">bs[left], bs[right] = bs[right], bs[left]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">string</span>(bs)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isLetter</span><span class="params">(b <span class="keyword">byte</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="string">'a'</span> &lt;= b &amp;&amp; b &lt;= <span class="string">'z'</span> ||</span><br><span class="line"><span class="string">'A'</span> &lt;= b &amp;&amp; b &lt;= <span class="string">'Z'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      反轉字串 只有字母
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
+    
+      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
+    
+      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ⓁⒸ ‧‧‧ 896. Monotonic Array</title>
+    <link href="https://xtobu.github.io/2019/07/18/LC-%E2%80%A7%E2%80%A7%E2%80%A7-896-Monotonic-Array/"/>
+    <id>https://xtobu.github.io/2019/07/18/LC-‧‧‧-896-Monotonic-Array/</id>
+    <published>2019-07-18T02:37:33.000Z</published>
+    <updated>2019-07-18T08:55:26.491Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="896-Monotonic-Array"><a href="#896-Monotonic-Array" class="headerlink" title="896. Monotonic Array"></a><a href="https://leetcode.com/problems/monotonic-array/" target="_blank" rel="noopener">896. Monotonic Array</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>An array is monotonic if it is either monotone increasing or monotone decreasing.<br>An array <code>A</code> is monotone increasing if for all <code>i &lt;= j</code>, <code>A[i] &lt;= A[j]</code>.<br>An array <code>A</code> is monotone decreasing if for all <code>i &lt;= j</code>, <code>A[i] &gt;= A[j]</code>.<br>Return <code>true</code> if and only if the given array A is monotonic.</p><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ol><li>1 &lt;= A.length &lt;= 50000</li><li>-100000 &lt;= A[i] &lt;= 100000</li></ol><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,2,3]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [6,5,4,4]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><h3 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,2]</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure><h3 id="Example-4"><a href="#Example-4" class="headerlink" title="Example 4"></a>Example 4</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,4,5]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><h3 id="Example-5"><a href="#Example-5" class="headerlink" title="Example 5"></a>Example 5</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,1,1]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>如果是單調的遞增或單調遞減，則這是個單調陣列<br>如果所有 <code>i &lt;= j</code>, <code>A[i] &lt;= A[j]</code> ，則 <code>A</code> 陣列為單調。<br>如果所有 <code>i &lt;= j</code>, <code>A[i] &gt;= A[j]</code> ，則 <code>A</code> 陣列為單調。<br>只有當給定的陣列 <code>A</code> 為單調時，才回傳 <code>true</code> 。 </p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol><li>1 &lt;= A.length &lt;= 50000</li><li>-100000 &lt;= A[i] &lt;= 100000</li></ol><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> problem0896</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判斷是否為單調的數列（統一遞增、遞減、不變）</span></span><br><span class="line"><span class="comment"> * 解題方向為：</span></span><br><span class="line"><span class="comment"> * 從 A 第一個數字，往後遍歷一次 A ，</span></span><br><span class="line"><span class="comment"> * 將當前數和之前一數字相比，判斷為增加還是減少，</span></span><br><span class="line"><span class="comment"> * 當 increasing, decreasing 都變成 false 時，</span></span><br><span class="line"><span class="comment"> * 則代表為不單調數列，故即可回傳 false</span></span><br><span class="line"><span class="comment"> * 都為單調即回傳 true</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isMonotonic</span><span class="params">(A []<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">increasing, decreasing := <span class="literal">true</span>, <span class="literal">true</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(A); i++ &#123;</span><br><span class="line"><span class="keyword">switch</span> &#123;</span><br><span class="line"><span class="keyword">case</span> A[i] &gt; A[i<span class="number">-1</span>]:</span><br><span class="line">decreasing = <span class="literal">false</span></span><br><span class="line"><span class="keyword">case</span> A[i] &lt; A[i<span class="number">-1</span>]:</span><br><span class="line">increasing = <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> decreasing == <span class="literal">false</span> &amp;&amp; increasing == <span class="literal">false</span> &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      單調的陣列
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
+    
+      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
+    
+  </entry>
   
   <entry>
     <title>ⓁⒸ ‧‧‧ 709. To Lower Case</title>
@@ -34,11 +88,11 @@
       <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
     
     
-      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
-    
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
@@ -64,11 +118,11 @@
     
       <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
     
-      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
-    
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
@@ -96,11 +150,11 @@
       <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
     
     
-      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
-    
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
@@ -124,11 +178,11 @@
       <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
     
     
-      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
-    
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
@@ -152,11 +206,11 @@
       <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
     
     
-      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
-    
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
@@ -244,11 +298,11 @@
       <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
     
     
-      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
-    
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
@@ -272,11 +326,11 @@
       <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
     
     
-      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
-    
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
@@ -300,11 +354,11 @@
       <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
     
     
-      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
-    
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
@@ -330,13 +384,13 @@
     
       <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
     
-      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
-    
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
       <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
       <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
     
       <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
     
@@ -364,17 +418,17 @@
     
       <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
     
-      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
-    
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
+    
+      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
     
       <category term="Sum" scheme="https://xtobu.github.io/tags/Sum/"/>
     
       <category term="Object" scheme="https://xtobu.github.io/tags/Object/"/>
     
       <category term="Key" scheme="https://xtobu.github.io/tags/Key/"/>
-    
-      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
@@ -555,70 +609,6 @@
       <category term="Object.keys()" scheme="https://xtobu.github.io/tags/Object-keys/"/>
     
       <category term="Map()" scheme="https://xtobu.github.io/tags/Map/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ⓁⒸ ‧‧‧ 238. Product of Array Except Self</title>
-    <link href="https://xtobu.github.io/2018/07/20/LC-%E2%80%A7%E2%80%A7%E2%80%A7-238-Product-of-Array-Except-Self/"/>
-    <id>https://xtobu.github.io/2018/07/20/LC-‧‧‧-238-Product-of-Array-Except-Self/</id>
-    <published>2018-07-20T12:34:31.000Z</published>
-    <updated>2019-04-22T05:51:37.436Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="238-Product-of-Array-Except-Self-除了自身以外的陣列乘積"><a href="#238-Product-of-Array-Except-Self-除了自身以外的陣列乘積" class="headerlink" title="238. Product of Array Except Self 除了自身以外的陣列乘積"></a><a href="https://leetcode.com/problems/product-of-array-except-self/description/" target="_blank" rel="noopener">238. Product of Array Except Self 除了自身以外的陣列乘積</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given an array <code>nums</code> of n integers where <em>n</em> &gt; 1,<br>return an array <code>output</code> such that <code>output[i]</code> is equal to the product of all the elements of <code>nums</code> except <code>nums[i]</code>.</p><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:  [1,2,3,4]</span><br><span class="line">Output: [24,12,8,6]</span><br></pre></td></tr></table></figure><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Please solve it <strong>without division</strong> and in O(<em>n</em>).</p><h3 id="Follow-up"><a href="#Follow-up" class="headerlink" title="Follow up"></a>Follow up</h3><p>Could you solve it with constant space complexity?<br>(The output array <strong>does not</strong> count as extra space for the purpose of space complexity analysis.)</p><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個整數 <em>n</em> &gt; 1 的陣列 <code>nums</code> ,<br>回傳一個陣列 <code>output</code> , 且 <code>output[i]</code> 是等於 <code>nums</code> 裡每一個數除了 <code>nums[i]</code> 以外的乘積.</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>請用沒有<strong>除法</strong>且時間複雜度 O(<em>n</em>) 的方式解決.</p><h3 id="後續"><a href="#後續" class="headerlink" title="後續"></a>後續</h3><p>你可以滿足常數空間複雜度地解決嗎?<br>(出於空間複雜度分析的目的, 輸出陣列<strong>不會</strong>被當作額外空間)</p><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * nums = [a, b, c, d] = [1, 2, 3, 4]</span></span><br><span class="line"><span class="comment"> * output = [b*c*d, a*c*d, a*b*d, a*b*c]</span></span><br><span class="line"><span class="comment"> * 往左乘 [1,       a, a*b, a*b*c] = [1 , 1 , 2, 6]</span></span><br><span class="line"><span class="comment"> * 往右乘 [b*c*d, c*d,   d,    1]  = [24, 12, 4, 1]</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> productExceptSelf = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (nums.length &lt;= <span class="number">1</span>) &#123;</span><br><span class="line"><span class="keyword">return</span> nums;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> length = nums.length;</span><br><span class="line"><span class="keyword">let</span> arrResult = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">let</span> leftProduct = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> rightProduct = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 先從左至右, 算往左乘的乘積</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">arrResult[i] = leftProduct;</span><br><span class="line">leftProduct *= nums[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 從右至左, 算往右的乘積, 並與往左的乘積相乘</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> j = length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">arrResult[j] *= rightProduct;</span><br><span class="line">rightProduct *= nums[j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> arrResult;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(productExceptSelf([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]));</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      除了自身以外的陣列乘積
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
-    
-      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
-    
-      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
-    
-      <category term="ⓁⒸ - Medium" scheme="https://xtobu.github.io/tags/LC-Medium/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ⓁⒸ ‧‧‧ 94. Binary Tree Inorder Traversal</title>
-    <link href="https://xtobu.github.io/2018/07/20/LC-%E2%80%A7%E2%80%A7%E2%80%A7-94-Binary-Tree-Inorder-Traversal/"/>
-    <id>https://xtobu.github.io/2018/07/20/LC-‧‧‧-94-Binary-Tree-Inorder-Traversal/</id>
-    <published>2018-07-20T12:29:23.000Z</published>
-    <updated>2019-04-22T05:51:37.440Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="94-Binary-Tree-Inorder-Traversal-二元樹中序遍歷"><a href="#94-Binary-Tree-Inorder-Traversal-二元樹中序遍歷" class="headerlink" title="94. Binary Tree Inorder Traversal 二元樹中序遍歷"></a><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/description/" target="_blank" rel="noopener">94. Binary Tree Inorder Traversal 二元樹中序遍歷</a></h1><blockquote><p>前中後序遍歷，參考：<a href="https://www.jianshu.com/p/456af5480cee" target="_blank" rel="noopener">https://www.jianshu.com/p/456af5480cee</a><br>使用堆疊的方式做二元樹遍歷</p></blockquote><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a binary tree, return the <em>inorder</em> traversal of its nodes’ values.</p><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,null,2,3]</span><br><span class="line">   1</span><br><span class="line">    \</span><br><span class="line">     2</span><br><span class="line">    /</span><br><span class="line">   3</span><br><span class="line"></span><br><span class="line">Output: [1,3,2]</span><br></pre></td></tr></table></figure><h3 id="Follow-up"><a href="#Follow-up" class="headerlink" title="Follow up"></a>Follow up</h3><p>Recursive solution is trivial, could you do it iteratively?</p><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個二元樹, 回傳其中序遍歷的節點的值.</p><h3 id="後續"><a href="#後續" class="headerlink" title="後續"></a>後續</h3><p>遞迴的解法並沒有什麼, 你能用迭代帶來處理嗎?</p><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * function TreeNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.left = this.right = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;TreeNode&#125; root</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二元樹迭代遍歷, 搭配 stack 堆疊</span></span><br><span class="line"><span class="comment">// 參考：https://www.jianshu.com/p/456af5480cee</span></span><br><span class="line"><span class="keyword">var</span> inorderTraversal = <span class="function"><span class="keyword">function</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line"><span class="keyword">let</span> result = [];</span><br><span class="line"><span class="keyword">let</span> stack = [];</span><br><span class="line"><span class="comment">// 判斷root樹是否為 null, 或是 stack 的長度大於 0</span></span><br><span class="line"><span class="keyword">while</span> (root !== <span class="literal">null</span> || stack.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line"><span class="keyword">if</span> (root) &#123;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 如果該樹 root 不是空值,</span></span><br><span class="line"><span class="comment"> * 便將 root 推入 stack ,</span></span><br><span class="line"><span class="comment"> * 將原本的 root 賦值 root.left,</span></span><br><span class="line"><span class="comment"> * 繼續 while</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">stack.push(root);</span><br><span class="line">root = root.left;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 如果進來這裡,</span></span><br><span class="line"><span class="comment"> * 代表 root 沒有值,但stack.length &gt; 0</span></span><br><span class="line"><span class="comment"> * 也就是說這裡是最左邊</span></span><br><span class="line"><span class="comment"> * 於是用 root = stack.pop();</span></span><br><span class="line"><span class="comment"> * 將 root 改成 stack 的最後一個元素, 並將 stack 的最後一個元素刪除</span></span><br><span class="line"><span class="comment"> * 之後將當下 root 值推到結果陣列 result , 即為中序遍歷的左子樹優先原則</span></span><br><span class="line"><span class="comment"> * 推完 result.push(root.val); 後</span></span><br><span class="line"><span class="comment"> * 再將 root = root.right;</span></span><br><span class="line"><span class="comment"> * 繼續 while</span></span><br><span class="line"><span class="comment"> * 繼續 從左子樹開始找</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">root = stack.pop();</span><br><span class="line">result.push(root.val);</span><br><span class="line">root = root.right;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="JavaScript-II"><a href="#JavaScript-II" class="headerlink" title="JavaScript II"></a>JavaScript II</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * function TreeNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.left = this.right = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;TreeNode&#125; root</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 遞迴解法</span></span><br><span class="line"><span class="comment"> * 最後回傳 result</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 中序遍歷,</span></span><br><span class="line"><span class="comment"> * 因此以左子樹為優先</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> inorderTraversal = <span class="function"><span class="keyword">function</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> result = [];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inOrder</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (node) &#123;</span><br><span class="line">inOrder(node.left);</span><br><span class="line">result.push(node.val);</span><br><span class="line">inOrder(node.right);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">inOrder(root);</span><br><span class="line"><span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      二元樹中序遍歷
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
-    
-      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
-    
-      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
-    
-      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
-    
-      <category term="Recursive" scheme="https://xtobu.github.io/tags/Recursive/"/>
-    
-      <category term="ⓁⒸ - Medium" scheme="https://xtobu.github.io/tags/LC-Medium/"/>
-    
-      <category term="Iteratively" scheme="https://xtobu.github.io/tags/Iteratively/"/>
-    
-      <category term="Stack" scheme="https://xtobu.github.io/tags/Stack/"/>
     
   </entry>
   

@@ -75,7 +75,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="JavaScript,LeetCode,ⓁⒸ - Easy,☄️,Array.reduce(),Array.keys(),">
+  <meta name="keywords" content="LeetCode,ⓁⒸ - Easy,Golang,">
 
 
 
@@ -91,18 +91,18 @@
 
 
 
-<meta name="description" content="自整除數">
-<meta name="keywords" content="JavaScript,LeetCode,ⓁⒸ - Easy,☄️,Array.reduce(),Array.keys()">
+<meta name="description" content="單調的陣列">
+<meta name="keywords" content="LeetCode,ⓁⒸ - Easy,Golang">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ⓁⒸ ‧‧‧ 728. Self Dividing Numbers">
-<meta property="og:url" content="https://xtobu.github.io/2018/07/20/LC-‧‧‧-728-Self-Dividing-Numbers/index.html">
+<meta property="og:title" content="ⓁⒸ ‧‧‧ 896. Monotonic Array">
+<meta property="og:url" content="https://xtobu.github.io/2019/07/18/LC-‧‧‧-896-Monotonic-Array/index.html">
 <meta property="og:site_name" content="jotting">
-<meta property="og:description" content="自整除數">
+<meta property="og:description" content="單調的陣列">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-22T05:51:37.438Z">
+<meta property="og:updated_time" content="2019-07-18T08:55:26.491Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ⓁⒸ ‧‧‧ 728. Self Dividing Numbers">
-<meta name="twitter:description" content="自整除數">
+<meta name="twitter:title" content="ⓁⒸ ‧‧‧ 896. Monotonic Array">
+<meta name="twitter:description" content="單調的陣列">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://xtobu.github.io/2018/07/20/LC-‧‧‧-728-Self-Dividing-Numbers/">
+  <link rel="canonical" href="https://xtobu.github.io/2019/07/18/LC-‧‧‧-896-Monotonic-Array/">
 
 
 
 
 
-  <title> ⓁⒸ ‧‧‧ 728. Self Dividing Numbers | jotting </title>
+  <title> ⓁⒸ ‧‧‧ 896. Monotonic Array | jotting </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -297,7 +297,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://xtobu.github.io/2018/07/20/LC-‧‧‧-728-Self-Dividing-Numbers/">
+  <link itemprop="mainEntityOfPage" href="https://xtobu.github.io/2019/07/18/LC-‧‧‧-896-Monotonic-Array/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="xTobu">
@@ -321,7 +321,7 @@
             
             
               
-                ⓁⒸ ‧‧‧ 728. Self Dividing Numbers
+                ⓁⒸ ‧‧‧ 896. Monotonic Array
               
             
           </h2>
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-20T15:47:49+08:00">
-                2018-07-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-18T10:37:33+08:00">
+                2019-07-18
               </time>
             
 
@@ -352,8 +352,8 @@
               
                 <span class="post-meta-item-text">Post modified</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-22T13:51:37+08:00">
-                2019-04-22
+              <time title="Post modified" itemprop="dateModified" datetime="2019-07-18T16:55:26+08:00">
+                2019-07-18
               </time>
             
           </span>
@@ -395,7 +395,7 @@
 
           
               <div class="post-description">
-                  自整除數
+                  單調的陣列
               </div>
           
 
@@ -410,18 +410,24 @@
       
 
       
-        <h1 id="728-Self-Dividing-Numbers-自整除數"><a href="#728-Self-Dividing-Numbers-自整除數" class="headerlink" title="728. Self Dividing Numbers 自整除數"></a><a href="https://leetcode.com/problems/self-dividing-numbers/description/" target="_blank" rel="noopener">728. Self Dividing Numbers 自整除數</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>A <em>self-dividing number</em> is a number that is divisible by every digit it contains.<br>For example, 128 is a self-dividing number because <code>128 % 1 == 0</code>, <code>128 % 2 == 0</code>, and <code>128 % 8 == 0</code>.<br>Also, a self-dividing number is not allowed to contain the digit zero.<br>Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul>
-<li>The boundaries of each input argument are <code>1 &lt;= left &lt;= right &lt;= 10000</code>.</li>
-</ul>
-<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">left = 1, right = 22</span><br><span class="line">Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]</span><br></pre></td></tr></table></figure>
+        <h1 id="896-Monotonic-Array"><a href="#896-Monotonic-Array" class="headerlink" title="896. Monotonic Array"></a><a href="https://leetcode.com/problems/monotonic-array/" target="_blank" rel="noopener">896. Monotonic Array</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>An array is monotonic if it is either monotone increasing or monotone decreasing.<br>An array <code>A</code> is monotone increasing if for all <code>i &lt;= j</code>, <code>A[i] &lt;= A[j]</code>.<br>An array <code>A</code> is monotone decreasing if for all <code>i &lt;= j</code>, <code>A[i] &gt;= A[j]</code>.<br>Return <code>true</code> if and only if the given array A is monotonic.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ol>
+<li>1 &lt;= A.length &lt;= 50000</li>
+<li>-100000 &lt;= A[i] &lt;= 100000</li>
+</ol>
+<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,2,3]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+<h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [6,5,4,4]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+<h3 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,2]</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<h3 id="Example-4"><a href="#Example-4" class="headerlink" title="Example 4"></a>Example 4</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,4,5]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+<h3 id="Example-5"><a href="#Example-5" class="headerlink" title="Example 5"></a>Example 5</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,1,1]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>自整除數 self-dividing number 是一種可以被自己所包含的所有位數整除的數.<br>舉例, 128 就是一個自整除數, 因為<code>128 % 1 == 0</code>, <code>128 % 2 == 0</code>, <code>128 % 8 == 0</code> ( % 是相除取餘數)<br>此外, 一個自整除數不允許有個位數是 0 .<br>給定個較低的和較高的數作為邊界, 輸出的每個是自整除數的列表, 如果可能的話要包含邊界數.</p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
-<li>作為邊界的每個輸入參數都是<code>1 &lt;= left &lt;= right &lt;= 10000</code>.</li>
-</ul>
+<h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>如果是單調的遞增或單調遞減，則這是個單調陣列<br>如果所有 <code>i &lt;= j</code>, <code>A[i] &lt;= A[j]</code> ，則 <code>A</code> 陣列為單調。<br>如果所有 <code>i &lt;= j</code>, <code>A[i] &gt;= A[j]</code> ，則 <code>A</code> 陣列為單調。<br>只有當給定的陣列 <code>A</code> 為單調時，才回傳 <code>true</code> 。 </p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
+<li>1 &lt;= A.length &lt;= 50000</li>
+<li>-100000 &lt;= A[i] &lt;= 100000</li>
+</ol>
 <hr>
-<h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; left</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; right</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> selfDividingNumbers = <span class="function"><span class="keyword">function</span>(<span class="params">left, right</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> arrayResult = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = left; i &lt;= right; i++) &#123;</span><br><span class="line">		arrayResult.push(i);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Array.prototype.keys()</span></span><br><span class="line"><span class="comment">	 * keys() 方法會回傳一個包含陣列中的每一個索引之鍵（keys）</span></span><br><span class="line"><span class="comment">	 * var array1 = ['a', 'b', 'c'];</span></span><br><span class="line"><span class="comment">	 * var iterator = array1.keys();</span></span><br><span class="line"><span class="comment">	 * result [0, 1, 2]</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * ...Array(1 + right - left)</span></span><br><span class="line"><span class="comment">	 * 結束 - 開始取數量, 因為要包含結束自己, 所以總數加一</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * 總數對了後, 跑 reduce() ,</span></span><br><span class="line"><span class="comment">	 * 將每一個 currentValue (key) 再加上 left 並判斷後傳回 accumulator,</span></span><br><span class="line"><span class="comment">	 * 即為我們要找的陣列</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">return</span> [...Array(<span class="number">1</span> + right - left).keys()].reduce(<span class="function"><span class="keyword">function</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">		accumulator,</span></span></span><br><span class="line"><span class="function"><span class="params">		currentValue</span></span></span><br><span class="line"><span class="function"><span class="params">	</span>) </span>&#123;</span><br><span class="line">		<span class="comment">// 總數, 當前值 + 起始值</span></span><br><span class="line">		<span class="keyword">let</span> number = currentValue + left;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 用 for...in 去確認每個位數</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> number.toString()) &#123;</span><br><span class="line">			<span class="comment">// 位數</span></span><br><span class="line">			<span class="keyword">let</span> digit = number.toString()[i];</span><br><span class="line">			<span class="comment">// 依題意, 要找出不包含零, 而且每個位數都可以整除自己的數</span></span><br><span class="line">			<span class="comment">// 故如果位數等於零, 或是相除有餘數, 便回傳原陣列.</span></span><br><span class="line">			<span class="keyword">if</span> (digit == <span class="number">0</span> || number % digit != <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> accumulator;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 通過的數將 push 到 accumulator , 繼續往下執行 reduce</span></span><br><span class="line">		accumulator.push(number);</span><br><span class="line">		<span class="keyword">return</span> accumulator;</span><br><span class="line">	&#125;,</span><br><span class="line">	[]);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(selfDividingNumbers(<span class="number">1</span>, <span class="number">22</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> problem0896</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判斷是否為單調的數列（統一遞增、遞減、不變）</span></span><br><span class="line"><span class="comment"> * 解題方向為：</span></span><br><span class="line"><span class="comment"> * 從 A 第一個數字，往後遍歷一次 A ，</span></span><br><span class="line"><span class="comment"> * 將當前數和之前一數字相比，判斷為增加還是減少，</span></span><br><span class="line"><span class="comment"> * 當 increasing, decreasing 都變成 false 時，</span></span><br><span class="line"><span class="comment"> * 則代表為不單調數列，故即可回傳 false</span></span><br><span class="line"><span class="comment"> * 都為單調即回傳 true</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isMonotonic</span><span class="params">(A []<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">	increasing, decreasing := <span class="literal">true</span>, <span class="literal">true</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(A); i++ &#123;</span><br><span class="line">		<span class="keyword">switch</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> A[i] &gt; A[i<span class="number">-1</span>]:</span><br><span class="line">			decreasing = <span class="literal">false</span></span><br><span class="line">		<span class="keyword">case</span> A[i] &lt; A[i<span class="number">-1</span>]:</span><br><span class="line">			increasing = <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> decreasing == <span class="literal">false</span> &amp;&amp; increasing == <span class="literal">false</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -445,17 +451,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-          
             <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
             <a href="/tags/LC-Easy/" rel="tag"># ⓁⒸ - Easy</a>
           
-            <a href="/tags/☄️/" rel="tag"># ☄️</a>
-          
-            <a href="/tags/Array-reduce/" rel="tag"># Array.reduce()</a>
-          
-            <a href="/tags/Array-keys/" rel="tag"># Array.keys()</a>
+            <a href="/tags/Golang/" rel="tag"># Golang</a>
           
         </div>
       
@@ -468,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/20/LC-‧‧‧-797-All-Paths-From-Source-to-Target/" rel="next" title="ⓁⒸ ‧‧‧ 797. All Paths From Source to Target">
-                <i class="fa fa-chevron-left"></i> ⓁⒸ ‧‧‧ 797. All Paths From Source to Target
+              <a href="/2019/07/17/LC-‧‧‧-709-To-Lower-Case/" rel="next" title="ⓁⒸ ‧‧‧ 709. To Lower Case">
+                <i class="fa fa-chevron-left"></i> ⓁⒸ ‧‧‧ 709. To Lower Case
               </a>
             
           </div>
@@ -478,8 +478,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/20/LC-‧‧‧-561-Array-Partition-I/" rel="prev" title="ⓁⒸ ‧‧‧ 561. Array Partition I">
-                ⓁⒸ ‧‧‧ 561. Array Partition I <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/18/LC-‧‧‧-917-Reverse-Only-Letters/" rel="prev" title="ⓁⒸ ‧‧‧ 917. Reverse Only Letters">
+                ⓁⒸ ‧‧‧ 917. Reverse Only Letters <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -641,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#728-Self-Dividing-Numbers-自整除數"><span class="nav-number">1.</span> <span class="nav-text">728. Self Dividing Numbers 自整除數</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-Origin"><span class="nav-number">1.1.</span> <span class="nav-text">❀ Origin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.1.1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note"><span class="nav-number">1.1.2.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-1"><span class="nav-number">1.1.3.</span> <span class="nav-text">Example 1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-翻譯"><span class="nav-number">1.2.</span> <span class="nav-text">❀ 翻譯</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#問題"><span class="nav-number">1.2.1.</span> <span class="nav-text">問題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.2.2.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-Solution"><span class="nav-number">1.3.</span> <span class="nav-text">❀ Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.3.1.</span> <span class="nav-text">JavaScript</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#896-Monotonic-Array"><span class="nav-number">1.</span> <span class="nav-text">896. Monotonic Array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-Origin"><span class="nav-number">1.1.</span> <span class="nav-text">❀ Origin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.1.1.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note"><span class="nav-number">1.1.2.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-1"><span class="nav-number">1.1.3.</span> <span class="nav-text">Example 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-2"><span class="nav-number">1.1.4.</span> <span class="nav-text">Example 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-3"><span class="nav-number">1.1.5.</span> <span class="nav-text">Example 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-4"><span class="nav-number">1.1.6.</span> <span class="nav-text">Example 4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-5"><span class="nav-number">1.1.7.</span> <span class="nav-text">Example 5</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-翻譯"><span class="nav-number">1.2.</span> <span class="nav-text">❀ 翻譯</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#問題"><span class="nav-number">1.2.1.</span> <span class="nav-text">問題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.2.2.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#❀-Solution"><span class="nav-number">1.3.</span> <span class="nav-text">❀ Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Golang"><span class="nav-number">1.3.1.</span> <span class="nav-text">Golang</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

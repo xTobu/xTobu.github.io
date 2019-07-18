@@ -4,6 +4,66 @@
   
     
     <entry>
+      <title>ⓁⒸ ‧‧‧ 917. Reverse Only Letters</title>
+      <link href="/2019/07/18/LC-%E2%80%A7%E2%80%A7%E2%80%A7-917-Reverse-Only-Letters/"/>
+      <url>/2019/07/18/LC-%E2%80%A7%E2%80%A7%E2%80%A7-917-Reverse-Only-Letters/</url>
+      
+        <content type="html"><![CDATA[<h1 id="917-Reverse-Only-Letters"><a href="#917-Reverse-Only-Letters" class="headerlink" title="917. Reverse Only Letters"></a><a href="https://leetcode.com/problems/reverse-only-letters/" target="_blank" rel="noopener">917. Reverse Only Letters</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a string <code>S</code>,<br>return the “reversed” string where all characters that are not a letter stay in the same place,<br>and all letters reverse their positions.</p><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ol><li><code>S.length &lt;= 100</code></li><li><code>33 &lt;= S[i].ASCIIcode &lt;= 122</code> </li><li><code>S</code> doesn’t contain <code>\</code> or <code>&quot;</code></li></ol><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;ab-cd&quot;</span><br><span class="line">Output: &quot;dc-ba&quot;</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;a-bC-dEf-ghIj&quot;</span><br><span class="line">Output: &quot;j-Ih-gfE-dCba&quot;</span><br></pre></td></tr></table></figure><h3 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;Test1ng-Leet=code-Q!&quot;</span><br><span class="line">Output: &quot;Qedo1ct-eeLg=ntse-T!&quot;</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個字串 <code>S</code>，回傳反轉過的字串，<br>其中所有不是字母的字符留在原位，<br>而所有字母反轉他們的位置。</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol><li><code>S.length &lt;= 100</code></li><li><code>33 &lt;= S[i].ASCIIcode &lt;= 122</code> </li><li><code>S</code> 不會包含 <code>\</code> 或 <code>&quot;</code></li></ol><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 題目為翻轉字串，但只反轉英文字母</span></span><br><span class="line"><span class="comment"> * 反轉字串的方式和 344. Reverse String 一樣，</span></span><br><span class="line"><span class="comment"> * 但因應題目，故建立 isLetter 去判斷欲反轉的左右邊際，</span></span><br><span class="line"><span class="comment"> * 於是都以 left &lt; right 並加上條件 !isLetter 的前提去跑遍歷，</span></span><br><span class="line"><span class="comment"> * 以尋找到都是字母的左右邊際，並將兩者反轉，</span></span><br><span class="line"><span class="comment"> * 全部跑完後，將 []byte 轉型成 string 回傳</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverseOnlyLetters</span><span class="params">(S <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">bs := []<span class="keyword">byte</span>(S)</span><br><span class="line">     left, right := <span class="number">0</span>, <span class="built_in">len</span>(bs)<span class="number">-1</span></span><br><span class="line"><span class="keyword">for</span>; left &lt; right; left, right = left+<span class="number">1</span>, right<span class="number">-1</span> &#123;</span><br><span class="line"><span class="keyword">for</span> left &lt; right &amp;&amp; !isLetter(bs[left]) &#123;</span><br><span class="line">left++</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> left &lt; right &amp;&amp; !isLetter(bs[right]) &#123;</span><br><span class="line">right--</span><br><span class="line">&#125;</span><br><span class="line">bs[left], bs[right] = bs[right], bs[left]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">string</span>(bs)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isLetter</span><span class="params">(b <span class="keyword">byte</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="string">'a'</span> &lt;= b &amp;&amp; b &lt;= <span class="string">'z'</span> ||</span><br><span class="line"><span class="string">'A'</span> &lt;= b &amp;&amp; b &lt;= <span class="string">'Z'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> Golang </tag>
+            
+            <tag> ☄️ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ⓁⒸ ‧‧‧ 896. Monotonic Array</title>
+      <link href="/2019/07/18/LC-%E2%80%A7%E2%80%A7%E2%80%A7-896-Monotonic-Array/"/>
+      <url>/2019/07/18/LC-%E2%80%A7%E2%80%A7%E2%80%A7-896-Monotonic-Array/</url>
+      
+        <content type="html"><![CDATA[<h1 id="896-Monotonic-Array"><a href="#896-Monotonic-Array" class="headerlink" title="896. Monotonic Array"></a><a href="https://leetcode.com/problems/monotonic-array/" target="_blank" rel="noopener">896. Monotonic Array</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>An array is monotonic if it is either monotone increasing or monotone decreasing.<br>An array <code>A</code> is monotone increasing if for all <code>i &lt;= j</code>, <code>A[i] &lt;= A[j]</code>.<br>An array <code>A</code> is monotone decreasing if for all <code>i &lt;= j</code>, <code>A[i] &gt;= A[j]</code>.<br>Return <code>true</code> if and only if the given array A is monotonic.</p><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ol><li>1 &lt;= A.length &lt;= 50000</li><li>-100000 &lt;= A[i] &lt;= 100000</li></ol><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,2,3]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [6,5,4,4]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><h3 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,2]</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure><h3 id="Example-4"><a href="#Example-4" class="headerlink" title="Example 4"></a>Example 4</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,4,5]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><h3 id="Example-5"><a href="#Example-5" class="headerlink" title="Example 5"></a>Example 5</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,1,1]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>如果是單調的遞增或單調遞減，則這是個單調陣列<br>如果所有 <code>i &lt;= j</code>, <code>A[i] &lt;= A[j]</code> ，則 <code>A</code> 陣列為單調。<br>如果所有 <code>i &lt;= j</code>, <code>A[i] &gt;= A[j]</code> ，則 <code>A</code> 陣列為單調。<br>只有當給定的陣列 <code>A</code> 為單調時，才回傳 <code>true</code> 。 </p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol><li>1 &lt;= A.length &lt;= 50000</li><li>-100000 &lt;= A[i] &lt;= 100000</li></ol><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> problem0896</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判斷是否為單調的數列（統一遞增、遞減、不變）</span></span><br><span class="line"><span class="comment"> * 解題方向為：</span></span><br><span class="line"><span class="comment"> * 從 A 第一個數字，往後遍歷一次 A ，</span></span><br><span class="line"><span class="comment"> * 將當前數和之前一數字相比，判斷為增加還是減少，</span></span><br><span class="line"><span class="comment"> * 當 increasing, decreasing 都變成 false 時，</span></span><br><span class="line"><span class="comment"> * 則代表為不單調數列，故即可回傳 false</span></span><br><span class="line"><span class="comment"> * 都為單調即回傳 true</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isMonotonic</span><span class="params">(A []<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">increasing, decreasing := <span class="literal">true</span>, <span class="literal">true</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(A); i++ &#123;</span><br><span class="line"><span class="keyword">switch</span> &#123;</span><br><span class="line"><span class="keyword">case</span> A[i] &gt; A[i<span class="number">-1</span>]:</span><br><span class="line">decreasing = <span class="literal">false</span></span><br><span class="line"><span class="keyword">case</span> A[i] &lt; A[i<span class="number">-1</span>]:</span><br><span class="line">increasing = <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> decreasing == <span class="literal">false</span> &amp;&amp; increasing == <span class="literal">false</span> &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> Golang </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ⓁⒸ ‧‧‧ 709. To Lower Case</title>
       <link href="/2019/07/17/LC-%E2%80%A7%E2%80%A7%E2%80%A7-709-To-Lower-Case/"/>
       <url>/2019/07/17/LC-%E2%80%A7%E2%80%A7%E2%80%A7-709-To-Lower-Case/</url>
@@ -20,11 +80,11 @@
       
         <tags>
             
-            <tag> Golang </tag>
-            
             <tag> LeetCode </tag>
             
             <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> Golang </tag>
             
             <tag> ☄️ </tag>
             
@@ -53,11 +113,11 @@
             
             <tag> JavaScript </tag>
             
-            <tag> Golang </tag>
-            
             <tag> LeetCode </tag>
             
             <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> Golang </tag>
             
             <tag> ☄️ </tag>
             
@@ -88,11 +148,11 @@
       
         <tags>
             
-            <tag> Golang </tag>
-            
             <tag> LeetCode </tag>
             
             <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> Golang </tag>
             
             <tag> ☄️ </tag>
             
@@ -119,11 +179,11 @@
       
         <tags>
             
-            <tag> Golang </tag>
-            
             <tag> LeetCode </tag>
             
             <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> Golang </tag>
             
             <tag> ☄️ </tag>
             
@@ -150,11 +210,11 @@
       
         <tags>
             
-            <tag> Golang </tag>
-            
             <tag> LeetCode </tag>
             
             <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> Golang </tag>
             
             <tag> ☄️ </tag>
             
@@ -251,11 +311,11 @@
       
         <tags>
             
-            <tag> Golang </tag>
-            
             <tag> LeetCode </tag>
             
             <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> Golang </tag>
             
             <tag> ☄️ </tag>
             
@@ -282,11 +342,11 @@
       
         <tags>
             
-            <tag> Golang </tag>
-            
             <tag> LeetCode </tag>
             
             <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> Golang </tag>
             
             <tag> ☄️ </tag>
             
@@ -313,11 +373,11 @@
       
         <tags>
             
-            <tag> Golang </tag>
-            
             <tag> LeetCode </tag>
             
             <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> Golang </tag>
             
             <tag> ☄️ </tag>
             
@@ -346,13 +406,13 @@
             
             <tag> JavaScript </tag>
             
-            <tag> Golang </tag>
-            
             <tag> LeetCode </tag>
             
             <tag> ⓁⒸ - Easy </tag>
             
             <tag> ⭐ </tag>
+            
+            <tag> Golang </tag>
             
             <tag> Array.reduce() </tag>
             
@@ -383,17 +443,17 @@
             
             <tag> JavaScript </tag>
             
-            <tag> Golang </tag>
-            
             <tag> LeetCode </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> Golang </tag>
             
             <tag> Sum </tag>
             
             <tag> Object </tag>
             
             <tag> Key </tag>
-            
-            <tag> ⓁⒸ - Easy </tag>
             
             <tag> ☄️ </tag>
             
@@ -639,9 +699,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ☄️ </tag>
-            
             <tag> ⭐ </tag>
+            
+            <tag> ☄️ </tag>
             
             <tag> Recursive </tag>
             
@@ -680,9 +740,9 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
-            <tag> ☄️ </tag>
-            
             <tag> ⭐ </tag>
+            
+            <tag> ☄️ </tag>
             
             <tag> Array.indexOf() </tag>
             
@@ -715,11 +775,11 @@
             
             <tag> LeetCode </tag>
             
+            <tag> Binary Tree </tag>
+            
             <tag> ⓁⒸ - Easy </tag>
             
             <tag> ☄️ </tag>
-            
-            <tag> Binary Tree </tag>
             
         </tags>
       
@@ -789,11 +849,11 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ⓁⒸ - Easy </tag>
-            
             <tag> Binary Tree </tag>
             
             <tag> Math.max() </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
             
             <tag> ⭐ </tag>
             
@@ -865,13 +925,13 @@
             
             <tag> ☄️ </tag>
             
+            <tag> Array.map() </tag>
+            
             <tag> String.split() </tag>
             
             <tag> Array.reverse() </tag>
             
             <tag> Array.join() </tag>
-            
-            <tag> Array.map() </tag>
             
             <tag> String.slice() </tag>
             
@@ -906,13 +966,13 @@
             
             <tag> ☄️ </tag>
             
+            <tag> Array.map() </tag>
+            
             <tag> String.split() </tag>
             
             <tag> Array.reverse() </tag>
             
             <tag> Array.join() </tag>
-            
-            <tag> Array.map() </tag>
             
         </tags>
       
@@ -1048,9 +1108,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ☄️ </tag>
-            
             <tag> Math.max() </tag>
+            
+            <tag> ☄️ </tag>
             
             <tag> ⓁⒸ - Medium </tag>
             
@@ -1188,9 +1248,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ⓁⒸ - Easy </tag>
-            
             <tag> Binary Tree </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
             
             <tag> ⭐ </tag>
             
@@ -1367,9 +1427,9 @@
             
             <tag> ☄️ </tag>
             
-            <tag> Array.reverse() </tag>
-            
             <tag> Array.map() </tag>
+            
+            <tag> Array.reverse() </tag>
             
         </tags>
       
