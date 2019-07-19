@@ -4,6 +4,45 @@
   
     
     <entry>
+      <title>ⓁⒸ ‧‧‧ 771. Jewels and Stones</title>
+      <link href="/2019/07/19/LC-%E2%80%A7%E2%80%A7%E2%80%A7-771-Jewels-and-Stones/"/>
+      <url>/2019/07/19/LC-%E2%80%A7%E2%80%A7%E2%80%A7-771-Jewels-and-Stones/</url>
+      
+        <content type="html"><![CDATA[<h1 id="771-Jewels-and-Stones-珠寶與石頭"><a href="#771-Jewels-and-Stones-珠寶與石頭" class="headerlink" title="771. Jewels and Stones 珠寶與石頭"></a><a href="https://leetcode.com/problems/jewels-and-stones/description/" target="_blank" rel="noopener">771. Jewels and Stones 珠寶與石頭</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>You’re given strings J representing the types of stones that are jewels,<br>and S representing the stones you have. Each character in S is a type of stone you have.<br>You want to know how many of the stones you have are also jewels.  </p><p>The letters in J are guaranteed distinct, and all characters in J and S are letters.<br>Letters are case sensitive, so “a” is considered a different type of stone from “A”.</p><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: J = &quot;aA&quot;, S = &quot;aAAbbbb&quot;</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: J = &quot;z&quot;, S = &quot;ZZ&quot;</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>有一字串 J 代表寶石的種類, 字串 S 代表你擁有的石頭.<br>字串 S 的每一個字元都代表著你有的一個那種石頭.<br>你想要知道你的石頭裡有幾個是寶石.  </p><p>字串 J 的每個字母都保證不同, 而且 J 與 S 的每個字元都保證是字母.<br>字母有區分大小寫, 所以 “a” 被認定為與 “A” 是不同類型的石頭.</p><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; J</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; S</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> numJewelsInStones = <span class="function"><span class="keyword">function</span>(<span class="params">J, S</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 依據 J(types of stones that are jewels) 建立一個新的 Set */</span></span><br><span class="line"><span class="keyword">const</span> setJ = <span class="keyword">new</span> <span class="built_in">Set</span>([...J]); <span class="comment">// Set(2) &#123;"a", "A"&#125;</span></span><br><span class="line">‍</span><br><span class="line"><span class="comment">/* 依據 S(the stones you have) 建立一個新的 Array */</span></span><br><span class="line"><span class="keyword">const</span> arrayS = S.split(<span class="string">''</span>); <span class="comment">// (7) ["a", "A", "A", "b", "b", "b", "b"]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* reduce */</span></span><br><span class="line"><span class="comment">// accumulator: 前一個參數，如果是第一個陣列的話，值是以另外傳入或初始化的值</span></span><br><span class="line"><span class="comment">// currentValue: 當前變數</span></span><br><span class="line"><span class="comment">// currentIndex: 當前索引</span></span><br><span class="line"><span class="comment">// array: 全部陣列</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 對 arrayS 跑 reduce,</span></span><br><span class="line"><span class="comment">       使用 Set 的 has(value), 判斷該值是否為Set的成員 */</span></span><br><span class="line"><span class="keyword">const</span> count = arrayS.reduce(</span><br><span class="line">(accumulator, currentValue, currentIndex, array) =&gt; &#123;</span><br><span class="line"><span class="keyword">return</span> accumulator + setJ.has(currentValue);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="number">0</span> <span class="comment">// 傳入reduce accumulator 的初始化值為 0</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> count;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numJewelsInStones</span><span class="params">(J <span class="keyword">string</span>, S <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立一個 map 作為 Hash table</span></span><br><span class="line"><span class="keyword">var</span> m = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">bool</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將寶石列表 J 的每個值，</span></span><br><span class="line"><span class="comment">// 作為哈希表的 key 存進去。</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> J &#123;</span><br><span class="line">m[J[i]] = <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍歷石頭列表 S ，</span></span><br><span class="line"><span class="comment">// 逐格去和雜湊表做比對，並記錄總數count</span></span><br><span class="line"><span class="keyword">var</span> count <span class="keyword">int</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> S &#123;</span><br><span class="line"><span class="keyword">if</span> _, ok := m[S[i]]; ok &#123;</span><br><span class="line">count++</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> count</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> Golang </tag>
+            
+            <tag> LeetCode </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
+            
+            <tag> ☄️ </tag>
+            
+            <tag> Array.reduce() </tag>
+            
+            <tag> String.split() </tag>
+            
+            <tag> Set() </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ⓁⒸ ‧‧‧ 917. Reverse Only Letters</title>
       <link href="/2019/07/18/LC-%E2%80%A7%E2%80%A7%E2%80%A7-917-Reverse-Only-Letters/"/>
       <url>/2019/07/18/LC-%E2%80%A7%E2%80%A7%E2%80%A7-917-Reverse-Only-Letters/</url>
@@ -451,13 +490,13 @@
             
             <tag> LeetCode </tag>
             
+            <tag> ⓁⒸ - Easy </tag>
+            
             <tag> Sum </tag>
             
             <tag> Object </tag>
             
             <tag> Key </tag>
-            
-            <tag> ⓁⒸ - Easy </tag>
             
             <tag> ☄️ </tag>
             
@@ -631,9 +670,9 @@
             
             <tag> ⭐ </tag>
             
-            <tag> Array.reduce() </tag>
-            
             <tag> ⓁⒸ - Medium </tag>
+            
+            <tag> Array.reduce() </tag>
             
             <tag> Array.sort() </tag>
             
@@ -703,9 +742,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ☄️ </tag>
-            
             <tag> ⭐ </tag>
+            
+            <tag> ☄️ </tag>
             
             <tag> Recursive </tag>
             
@@ -744,9 +783,9 @@
             
             <tag> ⓁⒸ - Easy </tag>
             
-            <tag> ☄️ </tag>
-            
             <tag> ⭐ </tag>
+            
+            <tag> ☄️ </tag>
             
             <tag> Array.indexOf() </tag>
             
@@ -779,11 +818,11 @@
             
             <tag> LeetCode </tag>
             
+            <tag> Binary Tree </tag>
+            
             <tag> ⓁⒸ - Easy </tag>
             
             <tag> ☄️ </tag>
-            
-            <tag> Binary Tree </tag>
             
         </tags>
       
@@ -853,11 +892,11 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ⓁⒸ - Easy </tag>
-            
             <tag> Binary Tree </tag>
             
             <tag> Math.max() </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
             
             <tag> ⭐ </tag>
             
@@ -890,9 +929,9 @@
             
             <tag> ⭐ </tag>
             
-            <tag> Array.reduce() </tag>
-            
             <tag> ⓁⒸ - Medium </tag>
+            
+            <tag> Array.reduce() </tag>
             
             <tag> Array.splice() </tag>
             
@@ -1112,9 +1151,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ☄️ </tag>
-            
             <tag> Math.max() </tag>
+            
+            <tag> ☄️ </tag>
             
             <tag> ⓁⒸ - Medium </tag>
             
@@ -1252,9 +1291,9 @@
             
             <tag> LeetCode </tag>
             
-            <tag> ⓁⒸ - Easy </tag>
-            
             <tag> Binary Tree </tag>
+            
+            <tag> ⓁⒸ - Easy </tag>
             
             <tag> ⭐ </tag>
             
@@ -1479,43 +1518,6 @@
     
     
     <entry>
-      <title>ⓁⒸ ‧‧‧ 771. Jewels and Stones</title>
-      <link href="/2018/07/20/LC-%E2%80%A7%E2%80%A7%E2%80%A7-771-Jewels-and-Stones/"/>
-      <url>/2018/07/20/LC-%E2%80%A7%E2%80%A7%E2%80%A7-771-Jewels-and-Stones/</url>
-      
-        <content type="html"><![CDATA[<h1 id="771-Jewels-and-Stones-珠寶與石頭"><a href="#771-Jewels-and-Stones-珠寶與石頭" class="headerlink" title="771. Jewels and Stones 珠寶與石頭"></a><a href="https://leetcode.com/problems/jewels-and-stones/description/" target="_blank" rel="noopener">771. Jewels and Stones 珠寶與石頭</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>You’re given strings J representing the types of stones that are jewels,<br>and S representing the stones you have. Each character in S is a type of stone you have.<br>You want to know how many of the stones you have are also jewels.  </p><p>The letters in J are guaranteed distinct, and all characters in J and S are letters.<br>Letters are case sensitive, so “a” is considered a different type of stone from “A”.</p><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: J = &quot;aA&quot;, S = &quot;aAAbbbb&quot;</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: J = &quot;z&quot;, S = &quot;ZZ&quot;</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>有一字串 J 代表寶石的種類, 字串 S 代表你擁有的石頭.<br>字串 S 的每一個字元都代表著你有的一個那種石頭.<br>你想要知道你的石頭裡有幾個是寶石.  </p><p>字串 J 的每個字母都保證不同, 而且 J 與 S 的每個字元都保證是字母.<br>字母有區分大小寫, 所以 “a” 被認定為與 “A” 是不同類型的石頭.</p><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><pre><code class="js"><span class="comment">/**</span><span class="comment"> * @param {string} J</span><span class="comment"> * @param {string} S</span><span class="comment"> * @return {number}</span><span class="comment"> */</span><span class="keyword">var</span> numJewelsInStones = <span class="function"><span class="keyword">function</span>(<span class="params">J, S</span>) </span>{    <span class="comment">/* 依據 J(types of stones that are jewels) 建立一個新的 Set */</span>    <span class="keyword">const</span> setJ = <span class="keyword">new</span> <span class="built_in">Set</span>([...J]); <span class="comment">// Set(2) {"a", "A"}</span>    <span class="comment">/* 依據 S(the stones you have) 建立一個新的 Array */</span>    <span class="keyword">const</span> arrayS = S.split(<span class="string">''</span>); <span class="comment">// (7) ["a", "A", "A", "b", "b", "b", "b"]</span>    <span class="comment">/* reduce */</span>    <span class="comment">// accumulator: 前一個參數，如果是第一個陣列的話，值是以另外傳入或初始化的值</span>    <span class="comment">// currentValue: 當前變數</span>    <span class="comment">// currentIndex: 當前索引</span>    <span class="comment">// array: 全部陣列</span>    <span class="comment">/* 對 arrayS 跑 reduce,</span><span class="comment">       使用 Set 的 has(value), 判斷該值是否為Set的成員 */</span>    <span class="keyword">const</span> count = arrayS.reduce(        (accumulator, currentValue, currentIndex, array) =&gt; {            <span class="keyword">return</span> accumulator + setJ.has(currentValue);        },        <span class="number">0</span> <span class="comment">// 傳入reduce accumulator 的初始化值為 0</span>    );    <span class="keyword">return</span> count;};</code></pre><hr>]]></content>
-      
-      
-      <categories>
-          
-          <category> LeetCode </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> JavaScript </tag>
-            
-            <tag> LeetCode </tag>
-            
-            <tag> ⓁⒸ - Easy </tag>
-            
-            <tag> ☄️ </tag>
-            
-            <tag> Array.reduce() </tag>
-            
-            <tag> String.split() </tag>
-            
-            <tag> Set() </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Get query string values in JavaScript</title>
       <link href="/2018/01/08/Get-query-string-values-in-JavaScript/"/>
       <url>/2018/01/08/Get-query-string-values-in-JavaScript/</url>
@@ -1618,9 +1620,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Back-end </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> Node.js </tag>
             

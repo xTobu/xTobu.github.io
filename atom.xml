@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xtobu.github.io/"/>
-  <updated>2019-07-18T09:00:36.076Z</updated>
+  <updated>2019-07-19T04:07:45.500Z</updated>
   <id>https://xtobu.github.io/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ⓁⒸ ‧‧‧ 771. Jewels and Stones</title>
+    <link href="https://xtobu.github.io/2019/07/19/LC-%E2%80%A7%E2%80%A7%E2%80%A7-771-Jewels-and-Stones/"/>
+    <id>https://xtobu.github.io/2019/07/19/LC-‧‧‧-771-Jewels-and-Stones/</id>
+    <published>2019-07-19T02:30:00.000Z</published>
+    <updated>2019-07-19T04:07:45.500Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="771-Jewels-and-Stones-珠寶與石頭"><a href="#771-Jewels-and-Stones-珠寶與石頭" class="headerlink" title="771. Jewels and Stones 珠寶與石頭"></a><a href="https://leetcode.com/problems/jewels-and-stones/description/" target="_blank" rel="noopener">771. Jewels and Stones 珠寶與石頭</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>You’re given strings J representing the types of stones that are jewels,<br>and S representing the stones you have. Each character in S is a type of stone you have.<br>You want to know how many of the stones you have are also jewels.  </p><p>The letters in J are guaranteed distinct, and all characters in J and S are letters.<br>Letters are case sensitive, so “a” is considered a different type of stone from “A”.</p><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: J = &quot;aA&quot;, S = &quot;aAAbbbb&quot;</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: J = &quot;z&quot;, S = &quot;ZZ&quot;</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>有一字串 J 代表寶石的種類, 字串 S 代表你擁有的石頭.<br>字串 S 的每一個字元都代表著你有的一個那種石頭.<br>你想要知道你的石頭裡有幾個是寶石.  </p><p>字串 J 的每個字母都保證不同, 而且 J 與 S 的每個字元都保證是字母.<br>字母有區分大小寫, 所以 “a” 被認定為與 “A” 是不同類型的石頭.</p><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; J</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; S</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> numJewelsInStones = <span class="function"><span class="keyword">function</span>(<span class="params">J, S</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 依據 J(types of stones that are jewels) 建立一個新的 Set */</span></span><br><span class="line"><span class="keyword">const</span> setJ = <span class="keyword">new</span> <span class="built_in">Set</span>([...J]); <span class="comment">// Set(2) &#123;"a", "A"&#125;</span></span><br><span class="line">‍</span><br><span class="line"><span class="comment">/* 依據 S(the stones you have) 建立一個新的 Array */</span></span><br><span class="line"><span class="keyword">const</span> arrayS = S.split(<span class="string">''</span>); <span class="comment">// (7) ["a", "A", "A", "b", "b", "b", "b"]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* reduce */</span></span><br><span class="line"><span class="comment">// accumulator: 前一個參數，如果是第一個陣列的話，值是以另外傳入或初始化的值</span></span><br><span class="line"><span class="comment">// currentValue: 當前變數</span></span><br><span class="line"><span class="comment">// currentIndex: 當前索引</span></span><br><span class="line"><span class="comment">// array: 全部陣列</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 對 arrayS 跑 reduce,</span></span><br><span class="line"><span class="comment">       使用 Set 的 has(value), 判斷該值是否為Set的成員 */</span></span><br><span class="line"><span class="keyword">const</span> count = arrayS.reduce(</span><br><span class="line">(accumulator, currentValue, currentIndex, array) =&gt; &#123;</span><br><span class="line"><span class="keyword">return</span> accumulator + setJ.has(currentValue);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="number">0</span> <span class="comment">// 傳入reduce accumulator 的初始化值為 0</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> count;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numJewelsInStones</span><span class="params">(J <span class="keyword">string</span>, S <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立一個 map 作為 Hash table</span></span><br><span class="line"><span class="keyword">var</span> m = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">bool</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 將寶石列表 J 的每個值，</span></span><br><span class="line"><span class="comment">// 作為哈希表的 key 存進去。</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> J &#123;</span><br><span class="line">m[J[i]] = <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍歷石頭列表 S ，</span></span><br><span class="line"><span class="comment">// 逐格去和雜湊表做比對，並記錄總數count</span></span><br><span class="line"><span class="keyword">var</span> count <span class="keyword">int</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> S &#123;</span><br><span class="line"><span class="keyword">if</span> _, ok := m[S[i]]; ok &#123;</span><br><span class="line">count++</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> count</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      判斷珠寶與石頭
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
+    
+      <category term="Golang" scheme="https://xtobu.github.io/tags/Golang/"/>
+    
+      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
+    
+      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
+      <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
+    
+      <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
+    
+      <category term="String.split()" scheme="https://xtobu.github.io/tags/String-split/"/>
+    
+      <category term="Set()" scheme="https://xtobu.github.io/tags/Set/"/>
+    
+  </entry>
   
   <entry>
     <title>ⓁⒸ ‧‧‧ 917. Reverse Only Letters</title>
@@ -426,13 +462,13 @@
     
       <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
     
+      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
+    
       <category term="Sum" scheme="https://xtobu.github.io/tags/Sum/"/>
     
       <category term="Object" scheme="https://xtobu.github.io/tags/Object/"/>
     
       <category term="Key" scheme="https://xtobu.github.io/tags/Key/"/>
-    
-      <category term="ⓁⒸ - Easy" scheme="https://xtobu.github.io/tags/LC-Easy/"/>
     
       <category term="☄️" scheme="https://xtobu.github.io/tags/%E2%98%84%EF%B8%8F/"/>
     
@@ -573,46 +609,6 @@
       <category term="ⓁⒸ - Medium" scheme="https://xtobu.github.io/tags/LC-Medium/"/>
     
       <category term="⭐⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90%E2%AD%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ⓁⒸ ‧‧‧ 347. Top K Frequent Elements</title>
-    <link href="https://xtobu.github.io/2018/07/20/LC-%E2%80%A7%E2%80%A7%E2%80%A7-347-Top-K-Frequent-Elements/"/>
-    <id>https://xtobu.github.io/2018/07/20/LC-‧‧‧-347-Top-K-Frequent-Elements/</id>
-    <published>2018-07-20T12:41:28.000Z</published>
-    <updated>2019-07-11T03:19:50.633Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="347-Top-K-Frequent-Elements-前-K-個頻繁出現的元素"><a href="#347-Top-K-Frequent-Elements-前-K-個頻繁出現的元素" class="headerlink" title="347. Top K Frequent Elements 前 K 個頻繁出現的元素"></a><a href="https://leetcode.com/problems/top-k-frequent-elements/description/" target="_blank" rel="noopener">347. Top K Frequent Elements 前 K 個頻繁出現的元素</a></h1><h2 id="❀-Origin"><a href="#❀-Origin" class="headerlink" title="❀ Origin"></a>❀ Origin</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Given a non-empty array of integers, return the <strong>k</strong> most frequent elements.</p><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:  nums = [1,1,1,2,2,3], k = 2</span><br><span class="line">Output: [1,2]</span><br></pre></td></tr></table></figure><h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul><li>You may assume _k_ is always valid, 1 ≤ _k_ ≤ number of unique elements.</li><li>Your algorithm’s time complexity <strong>must be</strong> better than O(<em>n</em> log <em>n</em>), where <em>n</em> is the array’s size.</li></ul><hr><h2 id="❀-翻譯"><a href="#❀-翻譯" class="headerlink" title="❀ 翻譯"></a>❀ 翻譯</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>給定一個非空的整數陣列, 回傳 <strong>k</strong> 個最頻繁出現的元素.</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul><li>你可以假設 _k_ 始終有效, 1 ≤ _k_ ≤ 獨一無二的元素的數量</li><li>你算法的時間複雜度<strong>必須</strong>優於 O(<em>n</em> log <em>n</em>), 其中 <em>n</em> 是陣列的大小.</li></ul><hr><h2 id="❀-Solution"><a href="#❀-Solution" class="headerlink" title="❀ Solution"></a>❀ Solution</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; k</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> topKFrequent = <span class="function"><span class="keyword">function</span>(<span class="params">nums, k</span>) </span>&#123;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用 obj 或 Map() 的方式來計算每個元素出現了幾次</span></span><br><span class="line"><span class="comment"> * 將陣列元素的值當作物件 obj 的 key ( obj[value] )</span></span><br><span class="line"><span class="comment"> * obj 的 value 則為次數</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> freqs = nums.reduce(<span class="function">(<span class="params">obj, value</span>) =&gt;</span> &#123;</span><br><span class="line">obj[value] = obj[value] + <span class="number">1</span> || <span class="number">1</span>;</span><br><span class="line"><span class="keyword">return</span> obj;</span><br><span class="line">&#125;, &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用 freqs 新建一個 Object.keys()</span></span><br><span class="line"><span class="comment"> * 並搭配 freqs 做排序</span></span><br><span class="line"><span class="comment"> * 之後以 slice() 取到目標數量 k</span></span><br><span class="line"><span class="comment"> * 再用 map() 整理新的陣列,</span></span><br><span class="line"><span class="comment"> * 因為Object.keys()的關係, 故用 Number(key) 傳入 key</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">return</span> <span class="built_in">Object</span>.keys(freqs)</span><br><span class="line">.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> freqs[b] - freqs[a])</span><br><span class="line">.slice(<span class="number">0</span>, k)</span><br><span class="line">.map(<span class="function"><span class="params">key</span> =&gt;</span> <span class="built_in">Number</span>(key));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nums = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> k = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(topKFrequent(nums, k));</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 別種方式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// var topKFrequent = function(nums, k) &#123;</span></span><br><span class="line"><span class="comment">// var hash = &#123;&#125;,</span></span><br><span class="line"><span class="comment">// res = [];</span></span><br><span class="line"><span class="comment">// nums.forEach(function(value) &#123;</span></span><br><span class="line"><span class="comment">// hash[value] = hash[value] + 1 || 1;</span></span><br><span class="line"><span class="comment">// &#125;);</span></span><br><span class="line"><span class="comment">// Object.keys(hash)</span></span><br><span class="line"><span class="comment">// .sort(function(a, b) &#123;</span></span><br><span class="line"><span class="comment">// return hash[b] - hash[a];</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"><span class="comment">// .slice(0, k)</span></span><br><span class="line"><span class="comment">// .forEach(function(x) &#123;</span></span><br><span class="line"><span class="comment">// res.push(parseInt(x));</span></span><br><span class="line"><span class="comment">// &#125;);</span></span><br><span class="line"><span class="comment">// return res;</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// var topKFrequent = function(nums, k) &#123;</span></span><br><span class="line"><span class="comment">//     const freqs = nums.reduce((map, value) =&gt; &#123;</span></span><br><span class="line"><span class="comment">//         if(map.has(value)) &#123;</span></span><br><span class="line"><span class="comment">//             map.set(value, map.get(value) + 1)</span></span><br><span class="line"><span class="comment">//         &#125; else &#123;</span></span><br><span class="line"><span class="comment">//             map.set(value, 1)</span></span><br><span class="line"><span class="comment">//         &#125;</span></span><br><span class="line"><span class="comment">//         return map;</span></span><br><span class="line"><span class="comment">//     &#125;, new Map());</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//     return Array</span></span><br><span class="line"><span class="comment">//         .from(freqs.entries())</span></span><br><span class="line"><span class="comment">//         .sort((entry1, entry2) =&gt; entry2[1] - entry1[1])</span></span><br><span class="line"><span class="comment">//         .slice(0,k)</span></span><br><span class="line"><span class="comment">//         .map(entry =&gt; entry[0])</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      前 K 個頻繁出現的元素
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="https://xtobu.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="JavaScript" scheme="https://xtobu.github.io/tags/JavaScript/"/>
-    
-      <category term="LeetCode" scheme="https://xtobu.github.io/tags/LeetCode/"/>
-    
-      <category term="⭐" scheme="https://xtobu.github.io/tags/%E2%AD%90/"/>
-    
-      <category term="Array.reduce()" scheme="https://xtobu.github.io/tags/Array-reduce/"/>
-    
-      <category term="ⓁⒸ - Medium" scheme="https://xtobu.github.io/tags/LC-Medium/"/>
-    
-      <category term="Array.sort()" scheme="https://xtobu.github.io/tags/Array-sort/"/>
-    
-      <category term="Array.slice()" scheme="https://xtobu.github.io/tags/Array-slice/"/>
-    
-      <category term="Array.map()" scheme="https://xtobu.github.io/tags/Array-map/"/>
-    
-      <category term="Object.keys()" scheme="https://xtobu.github.io/tags/Object-keys/"/>
-    
-      <category term="Map()" scheme="https://xtobu.github.io/tags/Map/"/>
     
   </entry>
   
